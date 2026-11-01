@@ -1,5 +1,7 @@
 (() => {
   const translations = {
+    "Projects": "项目目录",
+    "Open project directory": "打开项目目录",
     "Game Cutscene Storyboard": "游戏过场故事板",
     "Rigged Animation": "绑定动画",
     "Time Train": "时空列车",
