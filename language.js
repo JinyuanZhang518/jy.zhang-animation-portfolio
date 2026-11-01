@@ -1,5 +1,7 @@
 (() => {
   const translations = {
+    "Animated character avatar": "动态角色头像",
+    "Animated fox artist at a computer": "正在电脑前工作的狐狸角色动画",
     "SKELETAL ANIMATION — CHARACTER IDLE": "骨骼动画——角色待机动作",
     "Projects": "项目目录",
     "Open project directory": "打开项目目录",
