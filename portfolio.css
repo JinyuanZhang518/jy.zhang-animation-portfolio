@@ -72,4 +72,4 @@
 .page-quick-nav a{display:block;padding:6px;border-left:2px solid transparent;color:#666}
 .page-quick-nav a:hover,.page-quick-nav a:focus-visible{border-left-color:var(--accent);color:var(--accent);background:#faf7f8;outline:none}
 .quick-nav-page [id^="story-project-"],.quick-nav-page [id^="visual-project-"]{scroll-margin-top:24px}
-@media(max-width:900px){.quick-nav-page main{width:min(1200px,calc(100% - 32px));margin:0 auto}.page-quick-nav{display:none}}
+@media(max-width:700px){.quick-nav-page main{width:min(1200px,calc(100% - 32px));margin:0 auto}.page-quick-nav{display:none}}
