@@ -1,6 +1,8 @@
 (() => {
   const translations = {
     "Software: Procreate Dreams": "软件：Procreate Dreams",
+    "Software: MOHO, Procreate Dreams": "软件：MOHO、Procreate Dreams",
+    "Collaborative project. I handled the full animation process: storyboarding, motion, composition, frame-by-frame drawing, pacing, editing, lighting effects, music, and voice-over. Character design was handled by a collaborating designer.": "合作项目。我负责动画全流程：分镜、动势、构图、逐帧绘制、节奏、剪辑、光效、配乐与配音；角色设计由合作设计师负责。",
     "JINYUAN ZHANG | Portfolio": "JINYUAN ZHANG | 作品集",
     "Storyboard | JINYUAN ZHANG": "故事板 | JINYUAN ZHANG",
     "Visual Development | JINYUAN ZHANG": "视觉开发 | JINYUAN ZHANG",
