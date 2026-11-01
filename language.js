@@ -1,5 +1,6 @@
 (() => {
   const translations = {
+    "SKELETAL ANIMATION — CHARACTER IDLE": "骨骼动画——角色待机动作",
     "Projects": "项目目录",
     "Open project directory": "打开项目目录",
     "Game Cutscene Storyboard": "游戏过场故事板",
