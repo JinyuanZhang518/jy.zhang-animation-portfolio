@@ -63,3 +63,13 @@
 .storyboard-feature .software-credit{text-align:left;font-size:12px;margin:8px 0 14px;color:#8a8a8a;letter-spacing:.03em}
 
 .time-train-project .project-note{max-width:920px;margin:0 auto 14px;text-align:center;color:var(--muted);font-size:12px;line-height:1.7}
+
+
+/* Right-side quick links for long portfolio pages. */
+.quick-nav-page main{width:min(1100px,calc(100% - 210px));margin-left:auto;margin-right:190px}
+.page-quick-nav{position:fixed;z-index:20;right:16px;top:50%;transform:translateY(-50%);width:158px;max-height:78vh;overflow:auto;display:flex;flex-direction:column;gap:4px;padding:12px 10px;background:rgba(255,255,255,.96);border:1px solid var(--line);box-shadow:0 4px 18px rgba(0,0,0,.06);font-size:11px;line-height:1.4}
+.page-quick-nav strong{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#999;padding:0 6px 5px}
+.page-quick-nav a{display:block;padding:6px;border-left:2px solid transparent;color:#666}
+.page-quick-nav a:hover,.page-quick-nav a:focus-visible{border-left-color:var(--accent);color:var(--accent);background:#faf7f8;outline:none}
+.quick-nav-page [id^="story-project-"],.quick-nav-page [id^="visual-project-"]{scroll-margin-top:24px}
+@media(max-width:900px){.quick-nav-page main{width:min(1200px,calc(100% - 32px));margin:0 auto}.page-quick-nav{display:none}}
