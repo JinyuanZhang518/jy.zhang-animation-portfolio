@@ -100,7 +100,7 @@
 .quick-nav-page details.page-quick-nav>summary{display:flex;align-items:center;justify-content:center;min-height:92px;width:100%;padding:8px 4px;list-style:none;cursor:pointer;writing-mode:vertical-rl;color:#555;font-size:10px;font-weight:600;letter-spacing:.12em;user-select:none}
 .quick-nav-page details.page-quick-nav>summary::-webkit-details-marker{display:none}
 .quick-nav-page .page-quick-nav-links{display:none}
-.quick-nav-page details.page-quick-nav:hover,.quick-nav-page details.page-quick-nav:focus-within,.quick-nav-page details.page-quick-nav[open]{width:min(190px,calc(100vw - 24px));max-height:80vh;overflow:auto;background:rgba(255,255,255,.88);box-shadow:0 4px 16px rgba(0,0,0,.13)}
+.quick-nav-page details.page-quick-nav:hover,.quick-nav-page details.page-quick-nav:focus-within,.quick-nav-page details.page-quick-nav[open]{width:min(95px,calc(100vw - 24px));max-height:80vh;overflow:auto;background:rgba(255,255,255,.88);box-shadow:0 4px 16px rgba(0,0,0,.13)}
 .quick-nav-page details.page-quick-nav:hover .page-quick-nav-links,.quick-nav-page details.page-quick-nav:focus-within .page-quick-nav-links,.quick-nav-page details.page-quick-nav[open] .page-quick-nav-links{display:flex;flex-direction:column}
 .quick-nav-page details.page-quick-nav:hover>summary{display:none}
 .quick-nav-page details.page-quick-nav[open]>summary{min-height:34px;writing-mode:horizontal-tb;justify-content:flex-start;padding:8px 10px;border-bottom:1px solid #e7e7e7}
@@ -108,3 +108,6 @@
 .quick-nav-page .page-quick-nav-links a:last-child{border-bottom:0}
 .quick-nav-page .page-quick-nav-links a:hover,.quick-nav-page .page-quick-nav-links a:focus-visible{border-left-color:var(--accent);background:rgba(237,82,100,.07);color:var(--accent);outline:none}
 @media(max-width:700px){.quick-nav-page details.page-quick-nav{right:6px;width:36px;max-height:72vh}.quick-nav-page details.page-quick-nav>summary{min-height:80px;font-size:9px}}
+
+/* Keep expanded labels compact at the requested half-width. */
+.quick-nav-page details.page-quick-nav:hover .page-quick-nav-links a,.quick-nav-page details.page-quick-nav:focus-within .page-quick-nav-links a,.quick-nav-page details.page-quick-nav[open] .page-quick-nav-links a{padding:7px 8px;font-size:10px;line-height:1.3;overflow-wrap:anywhere}
