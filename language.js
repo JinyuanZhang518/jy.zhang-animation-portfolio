@@ -1,5 +1,13 @@
 (() => {
   const translations = {
+    "Game Cutscene Storyboard": "游戏过场故事板",
+    "Rigged Animation": "绑定动画",
+    "Time Train": "时空列车",
+    "Independent Animation": "独立动画",
+    "Commercial Animation": "商业动画",
+    "Collage Animation": "拼贴动画",
+    "Independent Animated Short Film": "独立动画短片",
+    "2D Frame-by-Frame Animation": "二维逐帧动画",
     "On this page": "本页导航",
     "2D Animation Storyboard": "二维动画分镜",
     "Rigged Animation": "绑定动画",
