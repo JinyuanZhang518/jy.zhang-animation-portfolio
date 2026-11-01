@@ -1,5 +1,6 @@
 (() => {
   const translations = {
+    "Software: Procreate Dreams": "软件：Procreate Dreams",
     "JINYUAN ZHANG | Portfolio": "JINYUAN ZHANG | 作品集",
     "Storyboard | JINYUAN ZHANG": "故事板 | JINYUAN ZHANG",
     "Visual Development | JINYUAN ZHANG": "视觉开发 | JINYUAN ZHANG",
