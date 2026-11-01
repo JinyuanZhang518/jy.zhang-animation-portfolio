@@ -1,5 +1,5 @@
 (() => {
-  const translations = {
+  const translations = {\n    "On this page": "本页导航",\n    "2D Animation Storyboard": "二维动画分镜",\n    "Rigged Animation": "绑定动画",\n    "Time Train": "时空列车",\n    "Independent Animation": "独立动画",\n    "Commercial Animation": "商业动画",\n    "Collage Animation": "拼贴动画",\n    "2D Frame-by-Frame Animation": "二维逐帧动画",
     "Software: Procreate Dreams": "软件：Procreate Dreams",
     "Software: MOHO, Procreate Dreams": "软件：MOHO、Procreate Dreams",
     "Collaborative project. I handled the full animation process: storyboarding, motion, composition, frame-by-frame drawing, pacing, editing, lighting effects, music, and voice-over. Character design was handled by a collaborating designer.": "合作项目。我负责动画全流程：分镜、动势、构图、逐帧绘制、节奏、剪辑、光效、配乐与配音；角色设计由合作设计师负责。",
