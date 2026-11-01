@@ -73,3 +73,5 @@
 .page-quick-nav a:hover,.page-quick-nav a:focus-visible{border-left-color:var(--accent);color:var(--accent);background:#faf7f8;outline:none}
 .quick-nav-page [id^="story-project-"],.quick-nav-page [id^="visual-project-"]{scroll-margin-top:24px}
 @media(max-width:700px){.quick-nav-page main{width:min(1200px,calc(100% - 32px));margin:0 auto}.page-quick-nav{display:none}}
+
+@media(max-width:700px){.quick-nav-page .page-quick-nav{position:relative;top:auto;right:auto;transform:none;width:auto;max-height:none;margin:14px 16px 0;display:flex;flex-direction:row;flex-wrap:wrap;gap:5px;background:#fff;border:1px solid #d8d8d8;border-left:4px solid var(--accent);box-shadow:0 3px 14px rgba(0,0,0,.09)}.quick-nav-page .page-quick-nav strong{width:100%;font-size:11px;color:#555}.quick-nav-page .page-quick-nav a{padding:6px 8px;border:1px solid #eee;background:#fafafa}.quick-nav-page main{margin-top:18px}}
