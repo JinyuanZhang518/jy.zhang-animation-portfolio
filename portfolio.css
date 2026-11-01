@@ -136,3 +136,10 @@
 .more-project-showcase{width:100%;margin:34px auto 0;transform:none}
 .more-project-showcase picture,.more-project-showcase img{display:block;width:100%;height:auto}
 @media(max-width:700px){.more-project-avatar{margin:28px auto 20px}.more-avatar-frame{width:140px;height:140px}.more-avatar-frame img{width:355px;transform:translate(calc(-50% + 9px),calc(-50% + 6px))}.more-project-showcase{margin-top:26px}}
+
+
+.more-role-sketches{margin:46px auto 0;padding-top:24px;border-top:1px solid var(--line)}
+.role-sketch-title{margin:0 0 18px;text-align:left;color:#555;font-size:19px;line-height:1.35;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.role-sketch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 12px;align-items:start}
+.role-sketch-grid img{display:block;width:100%;height:auto;object-fit:contain;background:#fff}
+@media(max-width:700px){.more-role-sketches{margin-top:32px;padding-top:20px}.role-sketch-title{font-size:16px;margin-bottom:14px}.role-sketch-grid{gap:9px 8px}}
