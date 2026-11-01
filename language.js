@@ -1,5 +1,12 @@
 (() => {
   const translations = {
+    "Character Sketches": "角色草图",
+    "Character sketch 1": "角色草图 1",
+    "Character sketch 2": "角色草图 2",
+    "Character sketch 3": "角色草图 3",
+    "Character sketch 4": "角色草图 4",
+    "Character sketch 5": "角色草图 5",
+    "Character sketch 6": "角色草图 6",
     "Animated character avatar": "动态角色头像",
     "Animated fox artist at a computer": "正在电脑前工作的狐狸角色动画",
     "SKELETAL ANIMATION — CHARACTER IDLE": "骨骼动画——角色待机动作",
