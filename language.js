@@ -1,5 +1,10 @@
 (() => {
   const translations = {
+    "Role Breakdown": "角色拆分",
+    "Role breakdown 1": "角色拆分 1",
+    "Role breakdown 2": "角色拆分 2",
+    "Role breakdown 3": "角色拆分 3",
+    "Role breakdown 4": "角色拆分 4",
     "Character Sketches": "角色草图",
     "Character sketch 1": "角色草图 1",
     "Character sketch 2": "角色草图 2",
