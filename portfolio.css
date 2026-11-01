@@ -127,3 +127,12 @@
 .more-project{width:min(1000px,100%);margin:8px auto 18px;padding:0 0 22px;border-bottom:1px solid var(--line)}
 .more-project h2{margin:0;text-align:left;color:#444;font-size:26px;line-height:1.3;font-weight:650;letter-spacing:.04em}
 @media(max-width:700px){.more-project{margin-top:4px}.more-project h2{font-size:21px}}
+
+
+.more-project-avatar{margin:34px auto 26px;text-align:center}
+.more-avatar-frame{position:relative;isolation:isolate;width:197px;height:197px;margin:0 auto;overflow:visible}
+.more-avatar-frame::after{content:"";position:absolute;z-index:0;inset:0;border:4px solid #f01818;border-radius:50%;pointer-events:none}
+.more-avatar-frame img{position:absolute;z-index:1;left:50%;top:50%;width:520px;height:auto;max-width:none;transform:translate(calc(-50% + 12px),calc(-50% + 8px));display:block;pointer-events:none}
+.more-project-showcase{width:100%;margin:34px auto 0;transform:none}
+.more-project-showcase picture,.more-project-showcase img{display:block;width:100%;height:auto}
+@media(max-width:700px){.more-project-avatar{margin:28px auto 20px}.more-avatar-frame{width:140px;height:140px}.more-avatar-frame img{width:355px;transform:translate(calc(-50% + 9px),calc(-50% + 6px))}.more-project-showcase{margin-top:26px}}
