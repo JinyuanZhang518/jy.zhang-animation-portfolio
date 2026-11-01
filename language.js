@@ -12,6 +12,7 @@
     "2D Frame-by-Frame Animation": "二维逐帧动画",
     "On this page": "本页导航",
     "2D Animation Storyboard": "二维动画分镜",
+    "2D Game Animation Storyboard": "二维游戏动画分镜",
     "Rigged Animation": "绑定动画",
     "Time Train": "时空列车",
     "Independent Animation": "独立动画",
