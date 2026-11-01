@@ -83,3 +83,13 @@
 .quick-nav-page .page-quick-nav a{display:grid;place-items:center;width:32px;height:32px;padding:0;border:1px solid #d8d8d8;border-radius:50%;background:#fff;color:#333;font-size:13px;font-weight:700;line-height:1}
 .quick-nav-page .page-quick-nav a:hover,.quick-nav-page .page-quick-nav a:focus-visible{border-color:var(--accent);background:var(--accent);color:#fff;outline:none}
 @media(max-width:700px){.quick-nav-page .page-quick-nav{position:fixed;right:6px;top:50%;transform:translateY(-50%);width:40px;max-height:75vh;margin:0;display:flex;flex-direction:column;flex-wrap:nowrap;gap:6px;padding:7px 4px}.quick-nav-page .page-quick-nav a{width:28px;height:28px;font-size:12px}.quick-nav-page main{width:calc(100% - 58px);margin:18px 48px 0 10px}}
+
+
+/* Titled floating project rail: overlays the page without reserving layout space. */
+.quick-nav-page main{width:min(1200px,calc(100% - 32px));margin:0 auto}
+.quick-nav-page .page-quick-nav{position:fixed;z-index:1000;right:12px;top:50%;transform:translateY(-50%);width:164px;max-height:78vh;overflow:auto;display:flex;flex-direction:column;gap:0;padding:8px;background:rgba(255,255,255,.96);border:1px solid #d8d8d8;border-radius:0;box-shadow:0 4px 18px rgba(0,0,0,.14);backdrop-filter:blur(5px)}
+.quick-nav-page .page-quick-nav strong{display:none}
+.quick-nav-page .page-quick-nav a{display:block;width:auto;height:auto;padding:9px 10px;border:0;border-bottom:1px solid #e8e8e8;border-left:2px solid transparent;border-radius:0;background:transparent;color:#444;font-size:11px;font-weight:600;line-height:1.4;white-space:normal}
+.quick-nav-page .page-quick-nav a:last-child{border-bottom:0}
+.quick-nav-page .page-quick-nav a:hover,.quick-nav-page .page-quick-nav a:focus-visible{border-left-color:var(--accent);background:rgba(237,82,100,.07);color:var(--accent);outline:none}
+@media(max-width:700px){.quick-nav-page main{width:calc(100% - 32px);margin:18px auto 0}.quick-nav-page .page-quick-nav{position:fixed;right:6px;top:50%;transform:translateY(-50%);width:132px;max-height:72vh;margin:0;display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;padding:6px;border-radius:0}.quick-nav-page .page-quick-nav a{width:auto;height:auto;padding:8px 7px;font-size:10px}}
