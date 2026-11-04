@@ -28,6 +28,7 @@
     "On this page": "本页导航",
     "2D Animation Storyboard": "二维动画分镜",
     "2D Game Animation Storyboard": "二维游戏动画分镜",
+    "In the post-industrial era, every train leaving the city must receive clearance from the port...": "在后工业时代，每一列驶离城市的列车都必须获得港口许可……",
     "Rigged Animation": "绑定动画",
     "Time Train": "时空列车",
     "Independent Animation": "独立动画",
