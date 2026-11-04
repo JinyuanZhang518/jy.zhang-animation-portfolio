@@ -1,5 +1,17 @@
 (() => {
   const translations = {
+    "Rigged Animation (Opening Sequence)": "绑定动画（开场片段）",
+    "Process": "创作过程",
+    "Time Train (2D Transition Animation)": "时空列车（二维过场动画）",
+    "People Company": "People 公司",
+    "Independent Animation (2D Frame-by-Frame Animation)": "独立动画（二维逐帧动画）",
+    "Commercial Animation (Collage Animation)": "商业动画（拼贴动画）",
+    "SEED Company": "SEED 公司",
+    "At the beginning of a fairy tale, a little princess uses a bright light to drive away the shadow monster that frightens the children.": "童话故事开篇，一位小公主用明亮的光驱散了令孩子们害怕的影子怪物。",
+    "A time-traveling train appears above cyberpunk London, circles overhead, and roars past.": "一列时空列车出现在赛博朋克风格的伦敦上空，盘旋片刻后呼啸而过。",
+    "A little girl lights lamps throughout the house, seeking peace in their glow. Suddenly, she hears a sound coming from a dark room. She steps inside...": "一个小女孩点亮屋里的灯，想在灯光中寻找安心。突然，她听见黑暗房间里传来声响，便走了进去……",
+    "A promotional short film created for a nonprofit project supporting coastal conservation and sustainable development.": "为支持海岸保护与可持续发展公益项目创作的宣传短片。",
+    "In the post-industrial era, every train leaving the city must receive clearance from the port...": "在后工业时代，每一列驶离城市的列车都必须获得港口许可……",
     "Role Breakdown": "角色拆分",
     "Role breakdown 1": "角色拆分 1",
     "Role breakdown 2": "角色拆分 2",
