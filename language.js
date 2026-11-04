@@ -1,6 +1,7 @@
 (() => {
   const translations = {
     "Storyboard Fast-Cut Reel": "分镜故事板快剪",
+    "Full Video": "完整视频",
     "While working at midnight, Cen, a mechanic who has lost her brother, discovers an old train stopped at the station. She runs after it—what is waiting aboard?": "失去哥哥的维修员岑在午夜工作时，发现了一辆停靠的老旧列车。她追了上去——列车上究竟有什么？",
     "Rigged Animation (Opening Sequence)": "绑定动画（开场片段）",
     "Process": "创作过程",
