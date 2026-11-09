@@ -173,3 +173,14 @@
 .storyboard-carousel-status{min-width:56px;text-align:center;color:#777;font-size:13px;font-variant-numeric:tabular-nums}
 @media(max-width:700px){.storyboard-carousel-controls{gap:14px;margin-top:10px}.storyboard-carousel-arrow{width:34px;height:34px;font-size:20px}}
 @media(prefers-reduced-motion:reduce){.storyboard-carousel-arrow{transition:none}}
+
+
+/* Overlay the carousel arrows at the image edges; keep the counter below. */
+.storyboard-carousel{position:relative}
+.storyboard-carousel-controls{position:static;height:0;margin:0;pointer-events:none}
+.storyboard-carousel-arrow{position:absolute;z-index:2;top:50%;transform:translateY(-50%);width:44px;height:60px;border-color:rgba(55,55,55,.18);background:rgba(255,255,255,.58);color:#333;opacity:.76;backdrop-filter:blur(4px);pointer-events:auto}
+.storyboard-carousel-arrow:hover,.storyboard-carousel-arrow:focus-visible{background:rgba(255,255,255,.9);opacity:1}
+.storyboard-carousel-controls .storyboard-carousel-arrow:first-child{left:12px}
+.storyboard-carousel-controls .storyboard-carousel-arrow:last-child{right:12px}
+.storyboard-carousel-status{position:relative;top:16px;display:block;margin:0 auto;padding:2px 8px;background:rgba(255,255,255,.78);border-radius:2px}
+@media(max-width:700px){.storyboard-carousel-arrow{width:34px;height:48px}.storyboard-carousel-controls .storyboard-carousel-arrow:first-child{left:6px}.storyboard-carousel-controls .storyboard-carousel-arrow:last-child{right:6px}.storyboard-carousel-status{top:11px}}
