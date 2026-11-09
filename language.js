@@ -69,7 +69,7 @@
     "AI Artwork": "AI 艺术", "More": "更多", "Main navigation": "主导航",
     "Character avatar": "角色头像", "Animation Postgraduate": "动画研究生",
     "Storyboard Artist": "故事板艺术家", "Animation Director": "动画导演",
-    "Visual Creator": "视觉创作者", "Animation Postgraduate | Storyboard Artist | Animation Director | Visual Creator": "动画研究生 | 故事板艺术家 | 动画导演 | 视觉创作者", "Welcome to My Portfolio": "欢迎来到我的作品集",
+    "Visual Creator": "视觉创作者", "Animation Postgraduate | Storyboard Artist | Animation Director | Visual Creator": "动画研究生 | 故事板艺术家 | 动画导演 | 视觉创作者", "Welcome to My Website": "欢迎来到我的网站",
     "Hi, I am an outgoing artist who loves connecting with people. I am curious about distinctive creative communities of all kinds. I hope to bridge reality and imagination through my work, bringing stories that exist only in fantasy to life so they can be seen and felt. I will pursue this dream with unwavering passion.": "嗨，我是一名性格开朗、热爱与人交流的艺术家。我对各种独特的艺术社群始终充满好奇。我希望通过创作打破现实与想象的边界，让那些只存在于幻想中的故事也能被看见、被感受，并为此永远饱含激情。",
     "STORYBOARD": "故事板", "Storyboard": "故事板", "Boards, process, animatics, and finished films": "分镜、创作过程、动态分镜与完成作品",
     "VISUAL DEVELOPMENT": "视觉开发", "Visual Development": "视觉开发", "Character, environment, color, and composition": "角色、场景、色彩与构图",

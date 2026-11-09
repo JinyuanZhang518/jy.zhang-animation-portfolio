@@ -199,7 +199,19 @@ body{background:#e8e8e6}
 /* Reserve a landscape frame before lazy-loaded storyboard images arrive. */
 .storyboard-carousel{aspect-ratio:1.86!important}
 
-.home-intro-divider{width:min(1100px,100%);height:2px;margin:28px auto 30px;background:#b8b8b5}
 .home-page .home-showcase{margin-top:0;background:var(--paper)!important}
 .home-page .home-showcase picture,.home-page .home-showcase img{display:block;background:var(--paper)!important}
 .home-page .home-showcase img{mix-blend-mode:multiply}
+
+
+/* Shared navigation divider and gentle page transitions */
+.site-nav{border-bottom:1px solid rgba(70,70,75,.28)}
+.home-page .avatar-frame::after{border-color:#e0218a}
+body.more-page{background:#fff;transition:background-color .3s ease}
+html.page-transitions body{animation:sitePageFadeIn .3s ease both}
+html.page-transitions.is-leaving body{opacity:0;transition:opacity .22s ease}
+@keyframes sitePageFadeIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+ html.page-transitions body{animation:none!important;transition:none!important}
+ html.page-transitions.is-leaving body{opacity:1!important}
+}
