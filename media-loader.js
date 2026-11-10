@@ -39,17 +39,28 @@ document.querySelectorAll("[data-chunks]").forEach(async (element) => {
       while (true) {
         const index = nextIndex++;
         if (index >= parts.length) return;
-        const response = await fetch(parts[index]);
-        if (!response.ok) throw new Error("A media segment could not be loaded.");
-        blobs[index] = await response.blob();
+        let response;
+        for (let attempt = 0; attempt < 2; attempt++) {
+          try {
+            response = await fetch(parts[index], { cache: "force-cache" });
+            if (!response.ok) throw new Error("A media segment could not be loaded.");
+            blobs[index] = await response.blob();
+            if (blobs[index].size > 0) break;
+            throw new Error("A media segment was empty.");
+          } catch (error) {
+            if (attempt === 1) throw error;
+            await new Promise(resolve => setTimeout(resolve, 350));
+          }
+        }
         finished++;
         say("loading", words.loading(finished, parts.length));
       }
     };
     if (wrapper) say("loading", words.loading(0, parts.length));
-    await Promise.all(Array.from({ length: Math.min(3, parts.length) }, worker));
+    await Promise.all(Array.from({ length: Math.min(6, parts.length) }, worker));
     const media = new Blob(blobs, { type: element.dataset.mime || "video/mp4" });
     const mediaUrl = URL.createObjectURL(media);
+    element.dataset.objectUrl = mediaUrl;
 
     if (isVideo) {
       element.addEventListener("loadeddata", () => say("ready", words.ready()), { once: true });
