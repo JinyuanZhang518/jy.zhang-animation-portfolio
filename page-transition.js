@@ -29,7 +29,11 @@
     const main = shell.querySelector("main");
     if (!main) return;
     const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const blocks = [...main.children].filter(node => node.nodeType === Node.ELEMENT_NODE);
+    const selector = "main > *, main section, main figure, main video, main img, main h2, main h3, main h4, main p, main .software-credit, main .process-divider";
+    const blocks = [...main.querySelectorAll(selector)].filter(node =>
+      !node.closest("[aria-hidden='true'], .visual-marquee-copy") &&
+      node.getClientRects().length > 0
+    );
     if (reduceMotion || !("IntersectionObserver" in window)) {
       blocks.forEach(node => node.classList.add("portfolio-scroll-reveal", "is-in-view"));
       return;
@@ -44,7 +48,7 @@
         entry.target.classList.add("is-in-view");
         revealObserver.unobserve(entry.target);
       }
-    }, { threshold: .04, rootMargin: "0px 0px -7% 0px" });
+    }, { threshold: .02, rootMargin: "0px 0px -4% 0px" });
     blocks.filter(node => !node.classList.contains("is-in-view")).forEach(node => revealObserver.observe(node));
   };
   document.head.querySelectorAll("style").forEach(style => style.dataset.routeStyle = "true");
