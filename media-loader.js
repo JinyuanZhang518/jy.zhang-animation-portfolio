@@ -86,8 +86,16 @@
         element.addEventListener("loadeddata", () => say("ready", words.ready()), { once: true });
         element.addEventListener("playing", () => say("playing", ""), { once: false });
         element.addEventListener("error", () => say("error", words.format()), { once: true });
+        if (isHero) {
+        if (element.dataset.sharedHeroMediaUrl !== mediaUrl) {
+          element.src = mediaUrl;
+          element.dataset.sharedHeroMediaUrl = mediaUrl;
+          element.load();
+        }
+      } else {
         element.src = mediaUrl;
         element.load();
+      }
         const attempt = () => element.play().then(() => say("playing", "")).catch(() => say("tap", words.tap()));
         element.addEventListener("click", attempt);
         element.addEventListener("canplay", attempt, { once: true });
