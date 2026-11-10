@@ -32,7 +32,7 @@
       tap: () => document.documentElement.lang.startsWith("zh")
         ? "轻触画面播放" : "Tap the video to play",
       format: () => document.documentElement.lang.startsWith("zh")
-        ? "此设备或浏览器不支持该 MOV 视频编码。" : "This device or browser does not support this MOV video codec.",
+        ? "此设备或浏览器无法播放该视频编码。请使用 H.264 MP4 版本。" : "This browser cannot decode this video. An H.264 MP4 version is needed.",
       loadError: () => document.documentElement.lang.startsWith("zh")
         ? "视频加载失败，请检查网络后刷新页面。" : "The video could not load. Check your connection and refresh the page."
     };
