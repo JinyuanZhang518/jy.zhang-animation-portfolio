@@ -1,14 +1,1 @@
-(() => {
-  const hero = document.querySelector(".storyboard-hero-video");
-  if (!hero) return;
-
-  const darkenPage = () => document.body.classList.add("storyboard-video-visible");
-  const observer = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) darkenPage();
-  }, { threshold: 0.08 });
-  observer.observe(hero);
-
-  hero.addEventListener("canplay", () => {
-    hero.play().catch(() => {});
-  }, { once: true });
-})();
+(()=>{const hero=document.querySelector(".storyboard-hero-video");if(!hero)return;const darken=()=>document.body.classList.add("storyboard-video-visible");let frame=0;const targets=[...document.querySelectorAll(".site-header,#story-project-1>*:not(.process-divider)")];targets.forEach(el=>el.classList.add("storyboard-scroll-fade-target"));const updateFade=()=>{frame=0;const rect=hero.getBoundingClientRect();const active=rect.bottom>0&&rect.top<innerHeight;if(!active){targets.forEach(el=>el.style.removeProperty("--scroll-proximity-opacity"));return}const center=innerHeight*.5,range=Math.max(innerHeight*.78,1);targets.forEach(el=>{const r=el.getBoundingClientRect();const d=Math.abs((r.top+r.bottom)*.5-center);const opacity=.28+.72*Math.min(1,d/range);el.style.setProperty("--scroll-proximity-opacity",opacity.toFixed(3))})};const schedule=()=>{if(!frame)frame=requestAnimationFrame(updateFade)};const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))darken();schedule()},{threshold:.02});observer.observe(hero);addEventListener("scroll",schedule,{passive:true});addEventListener("resize",schedule,{passive:true});hero.addEventListener("canplay",()=>hero.play().catch(()=>{}),{once:true});updateFade()})();
