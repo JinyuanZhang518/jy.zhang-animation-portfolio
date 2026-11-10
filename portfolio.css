@@ -548,3 +548,26 @@ body.quick-nav-page [id^="story-project-"],body.quick-nav-page [id^="visual-proj
 .site-header .avatar{backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translate3d(-50%,-50%,0);will-change:transform;contain:paint;image-rendering:auto}
 .home-page .avatar{transform:translate3d(calc(-50% + 12px),calc(-50% + 8px),0);backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform;image-rendering:auto}
 @media(max-width:700px){.home-page .avatar{transform:translate3d(calc(-50% + 9px),calc(-50% + 6px),0)}}
+
+/* Storyboard opening video: preserve the source ratio and fade the page to black when it enters view. */
+.storyboard-hero-video-wrap{width:100%;margin:0 auto 34px;background:#050505;overflow:hidden}
+.storyboard-hero-video{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;background:#050505}
+body{transition:background-color 1.2s ease,color 1.2s ease}
+body::before{transition:opacity 1.2s ease}
+body.storyboard-video-visible{background-color:#070707!important;color:#f2f0f1}
+body.storyboard-video-visible::before{opacity:0}
+body.storyboard-video-visible .site-header{background:rgba(8,8,8,.34);box-shadow:0 12px 36px rgba(0,0,0,.16)}
+body.storyboard-video-visible .site-header,
+body.storyboard-video-visible .site-name,
+body.storyboard-video-visible .site-role,
+body.storyboard-video-visible .site-email,
+body.storyboard-video-visible .site-nav a,
+body.storyboard-video-visible .storyboard-feature h2,
+body.storyboard-video-visible .storyboard-feature h3,
+body.storyboard-video-visible .storyboard-feature h4,
+body.storyboard-video-visible .storyboard-feature p,
+body.storyboard-video-visible .storyboard-feature .software-credit{color:#f2f0f1}
+body.storyboard-video-visible main>section{background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.16);box-shadow:0 16px 42px rgba(0,0,0,.2)}
+body.storyboard-video-visible .process-divider{opacity:.7}
+@media(max-width:700px){.storyboard-hero-video-wrap{margin-bottom:26px}}
+@media(prefers-reduced-motion:reduce){body,body::before{transition:none!important}}
