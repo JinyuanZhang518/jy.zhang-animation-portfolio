@@ -571,3 +571,10 @@ body.storyboard-video-visible main>section{background:rgba(255,255,255,.075);bor
 body.storyboard-video-visible .process-divider{opacity:.7}
 @media(max-width:700px){.storyboard-hero-video-wrap{margin-bottom:26px}}
 @media(prefers-reduced-motion:reduce){body,body::before{transition:none!important}}
+
+/* Keep the storyboard video full-ratio and flush above the project content. */
+main>.storyboard-hero-video-wrap{width:100%;margin:0 0 30px;padding:0!important;border:0!important;border-radius:0!important;background:#050505!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:hidden}
+.storyboard-hero-video{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:auto!important;object-fit:contain;background:#050505}
+body.storyboard-video-visible{background-color:#070707!important;color:#f2f0f1}
+body.storyboard-video-visible .storyboard-hero-video-wrap{background:#050505!important}
+@media(max-width:700px){main>.storyboard-hero-video-wrap{margin-bottom:24px}}
