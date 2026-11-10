@@ -1,5 +1,16 @@
 (() => {
   const translations = {
+    "Your browser does not support the video element.": "你的浏览器不支持视频播放。",
+    "Rigged Animation + 2D Frame-by-Frame Animation": "绑定动画 + 二维逐帧动画",
+    "The story of a little girl fighting a troublesome shadow monster.": "一个小女孩与纠缠她的影子怪物抗争的故事。",
+    "Visual Showcase": "视觉展示",
+    "Style Tests": "风格测试",
+    "A nonprofit short film promoting coastal conservation and sustainable development.": "一部为 SEED 公司创作的、倡导海岸保护与可持续发展的公益广告短片。",
+    "Style Explorations": "风格探索",
+    "PEOPLE Company": "People 公司",
+    "A train from the last century quietly appears, circling above the cyberpunk city of London.": "一列来自上个世纪的列车悄然出现，盘旋于赛博朋克风格的伦敦上空。",
+    "Eat My Shorts London": "Eat My Shorts 伦敦",
+    "A wildlife-themed countdown opening sequence featuring the number “2”.": "以野生动物为主题、以数字“2”为主视觉的电影节开场倒计时。",
     "Storyboard Fast-Cut Reel": "分镜故事板快剪",
     "Full Video": "完整视频",
     "While working at midnight, Cen, a mechanic who has lost her brother, discovers an old train stopped at the station. She runs after it—what is waiting aboard?": "失去哥哥的维修员岑在午夜工作时，发现了一辆停靠的老旧列车。她追了上去——列车上究竟有什么？",
@@ -114,14 +125,23 @@
         if (value && dictionary[value]) element.setAttribute(attribute, dictionary[value]);
       }
     }
-    document.documentElement.lang = language;
+    document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+    const pageTitles = {
+      "index.html": "JINYUAN ZHANG | Portfolio",
+      "storyboard.html": "Storyboard | JINYUAN ZHANG",
+      "visual.html": "Visual Development | JINYUAN ZHANG",
+      "ai-art.html": "AI Artwork | JINYUAN ZHANG",
+      "more.html": "More | JINYUAN ZHANG"
+    };
+    const title = pageTitles[location.pathname.split("/").pop()] || "JINYUAN ZHANG | Portfolio";
+    document.title = dictionary[title] || title;
     button.textContent = language === "zh" ? "English" : "中文";
     button.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换为中文");
     try { localStorage.setItem("portfolio-language", language); } catch (_) {}
   };
 
   let language = "en";
-  try { language = localStorage.getItem("portfolio-language") === "zh" ? "zh" : "en"; } catch (_) {}
+  try { language = (localStorage.getItem("portfolio-language") || "").startsWith("zh") ? "zh" : "en"; } catch (_) {}
   setLanguage(language);
-  button.addEventListener("click", () => setLanguage(document.documentElement.lang === "zh" ? "en" : "zh"));
+  button.addEventListener("click", () => setLanguage(document.documentElement.lang.startsWith("zh") ? "en" : "zh"));
 })();

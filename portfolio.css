@@ -204,18 +204,32 @@ body{background:#e8e8e6}
 .home-page .home-showcase img{mix-blend-mode:multiply}
 
 
-/* Shared navigation divider and gentle page transitions */
-.site-nav{border-bottom:1px solid rgba(70,70,75,.28)}
-.home-page .avatar-frame::after{border-color:#e0218a}
-body.more-page{background:#fff;transition:background-color .3s ease}
-html.page-transitions main,
-html.page-transitions .site-footer{animation:siteContentFadeIn .3s ease both}
-html.page-transitions.is-leaving main,
-html.page-transitions.is-leaving .site-footer{opacity:0;transition:opacity .22s ease}
-@keyframes siteContentFadeIn{from{opacity:0}to{opacity:1}}
-@media(prefers-reduced-motion:reduce){
- html.page-transitions main,
- html.page-transitions .site-footer{animation:none!important;transition:none!important}
- html.page-transitions.is-leaving main,
- html.page-transitions.is-leaving .site-footer{opacity:1!important}
+
+/* Page transitions affect only the content below the navigation divider. */
+main.page-transition-entering,
+.page-quick-nav.page-transition-entering,
+.site-footer.page-transition-entering {
+  animation: contentOnlyFadeIn .34s ease both;
+}
+main.page-transition-leaving,
+.page-quick-nav.page-transition-leaving,
+.site-footer.page-transition-leaving {
+  opacity: 0 !important;
+  transition: opacity .28s ease !important;
+}
+@keyframes contentOnlyFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  main.page-transition-entering,
+  .page-quick-nav.page-transition-entering,
+  .site-footer.page-transition-entering,
+  main.page-transition-leaving,
+  .page-quick-nav.page-transition-leaving,
+  .site-footer.page-transition-leaving {
+    animation: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
 }
