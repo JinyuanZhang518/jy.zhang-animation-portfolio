@@ -22,6 +22,8 @@
   };
 
   let shell = document.querySelector(".page-content-shell") || makeShell();
+  window.__portfolioStoryboardHero = window.__portfolioStoryboardHero ||
+    shell.querySelector(".storyboard-hero-video-wrap");
   let busy = false;
   let revealObserver = null;
   const initScrollReveal = () => {
@@ -55,7 +57,12 @@
 
   const cleanOldPage = () => {
     revealObserver?.disconnect();
+    // Keep the large storyboard showreel node and its decoded media alive across
+    // client-side page changes. It is reattached when the storyboard route returns.
+    const hero = shell.querySelector(".storyboard-hero-video-wrap");
+    if (hero) window.__portfolioStoryboardHero = hero;
     shell.querySelectorAll("video").forEach(video => {
+      if (video.classList.contains("storyboard-hero-video")) return;
       try { video.pause(); video.removeAttribute("src"); video.load(); } catch (_) {}
       if (video.dataset.objectUrl) { URL.revokeObjectURL(video.dataset.objectUrl); delete video.dataset.objectUrl; }
     });
@@ -107,6 +114,12 @@
         !(node.nodeType === Node.ELEMENT_NODE && node.tagName === "SCRIPT")
       );
       const incomingStyles = [...parsed.head.querySelectorAll("style")].map(style => style.cloneNode(true));
+      const incomingHero = parsed.querySelector(".storyboard-hero-video-wrap");
+      if (incomingHero && window.__portfolioStoryboardHero) {
+        incomingHero.replaceWith(window.__portfolioStoryboardHero);
+      } else if (incomingHero) {
+        window.__portfolioStoryboardHero = incomingHero;
+      }
 
       const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (!reduceMotion) {
