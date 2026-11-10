@@ -17,8 +17,8 @@
     originalGroup.className = "visual-marquee-group";
     originalGroup.setAttribute("role", "list");
 
-    for (const image of images) {
-      image.loading = "eager";
+    for (const [index, image] of images.entries()) {
+      image.loading = index < 2 ? "eager" : "lazy";
       image.decoding = "async";
       image.setAttribute("role", "listitem");
       originalGroup.append(image);
@@ -33,7 +33,7 @@
       image.removeAttribute("role");
       image.removeAttribute("tabindex");
       image.removeAttribute("data-enlarge");
-      image.loading = "eager";
+      image.loading = "lazy";
       image.style.pointerEvents = "none";
     });
 
@@ -53,9 +53,19 @@
     list.addEventListener("focusin", () => list.classList.add("motion-paused"));
     list.addEventListener("focusout", () => { if (!reduceMotion.matches) list.classList.remove("motion-paused"); });
     if ("IntersectionObserver" in window) {
-      new IntersectionObserver(([entry]) => {
+      list.classList.add("motion-offscreen");
+      let introStarted = false;
+      const observer = new IntersectionObserver(([entry]) => {
         list.classList.toggle("motion-offscreen", !entry.isIntersecting);
-      }, { threshold: 0 }).observe(list);
+        if (entry.isIntersecting && !introStarted && !reduceMotion.matches) {
+          introStarted = true;
+          track.classList.add("marquee-enter");
+          track.addEventListener("animationend", (event) => {
+            if (event.animationName === "visual-marquee-enter") track.classList.remove("marquee-enter");
+          });
+        }
+      }, { threshold: 0, rootMargin: "120px 0px" });
+      observer.observe(list);
     }
   }
 
