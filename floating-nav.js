@@ -1,0 +1,1 @@
+(()=>{document.querySelectorAll(".page-quick-nav").forEach(nav=>{nav.addEventListener("pointerenter",e=>{if(e.pointerType!=="touch")nav.open=true});nav.addEventListener("pointerleave",e=>{if(e.pointerType!=="touch")nav.open=false});nav.addEventListener("focusout",e=>{if(!nav.contains(e.relatedTarget))nav.open=false});});})();
