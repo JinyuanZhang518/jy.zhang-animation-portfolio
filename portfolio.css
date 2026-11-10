@@ -489,3 +489,6 @@ body.quick-nav-page aside.page-quick-nav .page-quick-nav-links a:hover,body.quic
 /* V6: the nav is lifted out of the animated page shell so fixed positioning stays viewport-relative. */
 body.quick-nav-page>aside.page-quick-nav{position:fixed!important;top:50%!important;right:14px!important;left:auto!important;bottom:auto!important;transform:translateY(-50%)!important;z-index:2147483000!important}
 @media(max-width:700px){body.quick-nav-page>aside.page-quick-nav{right:6px!important}}
+
+/* V7: neutralize legacy upward offset on the project list. */
+body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{transform:none!important;position:static!important;inset:auto!important}
