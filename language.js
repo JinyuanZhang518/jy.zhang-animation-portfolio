@@ -101,6 +101,7 @@
     "ENVIRONMENT": "场景设计", "Environment Design": "场景设计", "Locations and atmosphere for story worlds · Placeholder": "故事世界中的地点与氛围 · 示例内容",
     "COLOR SCRIPT": "色彩脚本", "Color Script": "色彩脚本", "Emotional shifts and color rhythm · Placeholder": "情绪变化与色彩节奏 · 示例内容",
     "© 2026 JINYUAN ZHANG · PORTFOLIO": "© 2026 JINYUAN ZHANG · 作品集",
+    "STORYBOARD SHOWREEL": "故事板作品精选",
     "Storyboard portfolio": "故事板作品集"
   };
   const reverse = Object.fromEntries(Object.entries(translations).map(([en, zh]) => [zh, en]));
