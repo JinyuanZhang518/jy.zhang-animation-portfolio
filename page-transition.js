@@ -4,15 +4,10 @@
     Array.from(document.querySelectorAll(selector))
   );
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const supportsTransitions = CSS.supports("view-transition-name: root");
-  const supportsCrossDocumentTransitions = supportsTransitions &&
-    "onpageswap" in window && "onpagereveal" in window &&
-    typeof document.startViewTransition === "function";
-  const nativeNavigationTransitions = supportsCrossDocumentTransitions && !reduceMotion;
   let navigationStarted = false;
 
-  // Keep the shared header and divider still; gently reveal only page content.
-  if (!nativeNavigationTransitions) {
+  // The shared header and divider are never part of the transition.
+  if (!reduceMotion) {
     const entering = content();
     entering.forEach((element) => element.classList.add("page-transition-entering"));
     window.setTimeout(() => {
@@ -26,8 +21,7 @@
   });
 
   document.addEventListener("click", (event) => {
-    if (navigationStarted || nativeNavigationTransitions || reduceMotion ||
-        event.defaultPrevented || event.button !== 0 ||
+    if (navigationStarted || reduceMotion || event.defaultPrevented || event.button !== 0 ||
         event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
     const target = event.target instanceof Element ? event.target : event.target?.parentElement;
