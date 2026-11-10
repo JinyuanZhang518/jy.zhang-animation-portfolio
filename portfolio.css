@@ -437,3 +437,23 @@ body, .home-page .home-showcase, .home-page .home-showcase picture, .home-page .
  .page-quick-nav-links{max-height:62vh!important}
  .page-quick-nav-links a{width:34px!important;min-height:38px!important}
 }
+
+/* Persistent icon rail: icons stay visible; labels expand on hover/focus. */
+.page-quick-nav{position:fixed!important;z-index:1200!important;right:18px!important;top:50%!important;transform:translateY(-50%)!important;width:54px!important;max-height:78vh!important;overflow:visible!important;display:block!important;padding:7px!important;background:rgba(245,245,245,.46)!important;border:1px solid rgba(30,30,30,.18)!important;border-radius:7px!important;box-shadow:0 8px 28px rgba(0,0,0,.14)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;transition:width .24s ease,background-color .24s ease,box-shadow .24s ease!important}
+.page-quick-nav:hover,.page-quick-nav:focus-within,.page-quick-nav.is-expanded{width:236px!important;background:rgba(245,245,245,.78)!important;box-shadow:0 10px 30px rgba(0,0,0,.2)!important}
+.quick-nav-trigger{width:100%!important;height:40px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;cursor:pointer!important;border:0!important;background:transparent!important;color:#282828!important;padding:0!important}
+.quick-nav-trigger:focus-visible{outline:2px solid rgba(25,25,25,.6)!important;outline-offset:2px!important}
+.quick-nav-rail-icon{font-family:Arial,sans-serif!important;font-size:25px!important;line-height:1!important;font-weight:300!important}
+.quick-nav-rail-label{display:none!important;font-size:10px!important;letter-spacing:.16em!important}
+.page-quick-nav:hover .quick-nav-rail-label,.page-quick-nav:focus-within .quick-nav-rail-label,.page-quick-nav.is-expanded .quick-nav-rail-label{display:inline!important}
+.page-quick-nav-links{display:block!important;max-height:68vh!important;overflow:auto!important;padding:4px 0 2px!important}
+.page-quick-nav-links a{display:flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;width:40px!important;min-height:42px!important;margin:2px auto!important;padding:5px!important;overflow:hidden!important;border:0!important;border-radius:4px!important;background:transparent!important;color:#292929!important;font-size:12px!important;line-height:1.35!important;transition:background-color .16s ease,color .16s ease,width .2s ease!important}
+.quick-nav-icon{width:25px!important;flex:0 0 25px!important;text-align:center!important;color:#333!important;font-family:Arial,sans-serif!important;font-size:20px!important;line-height:1!important}
+.page-quick-nav-links a>span:not(.quick-nav-icon){display:none!important}
+.page-quick-nav-links a:hover,.page-quick-nav-links a:focus-visible{background:rgba(255,255,255,.58)!important;color:#000!important;outline:none!important}
+.page-quick-nav:hover .page-quick-nav-links a,.page-quick-nav:focus-within .page-quick-nav-links a,.page-quick-nav.is-expanded .page-quick-nav-links a{width:100%!important;justify-content:flex-start!important;padding:7px 9px!important}
+.page-quick-nav:hover .page-quick-nav-links a>span:not(.quick-nav-icon),.page-quick-nav:focus-within .page-quick-nav-links a>span:not(.quick-nav-icon),.page-quick-nav.is-expanded .page-quick-nav-links a>span:not(.quick-nav-icon){display:inline!important}
+.site-header .avatar-frame::after{border:4px solid #171717!important;z-index:0!important}
+.site-header .avatar{z-index:1!important}
+@media(max-width:700px){.quick-nav-page main{width:calc(100% - 24px)!important}.page-quick-nav{right:8px!important;width:46px!important;padding:5px!important;max-height:75vh!important}.page-quick-nav:hover,.page-quick-nav:focus-within,.page-quick-nav.is-expanded{width:min(226px,calc(100vw - 24px))!important}.quick-nav-trigger{height:38px!important}.page-quick-nav-links{max-height:62vh!important}.page-quick-nav-links a{width:34px!important;min-height:38px!important}}
+@media(prefers-reduced-motion:reduce){.page-quick-nav,.page-quick-nav-links a{transition:none!important}}
