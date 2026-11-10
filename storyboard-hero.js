@@ -1,1 +1,35 @@
-(()=>{const hero=document.querySelector(".storyboard-hero-video");if(!hero)return;const body=document.body;let frame=0;const targets=[...new Set(document.querySelectorAll(".site-header,#story-project-1>*:not(.process-divider),#story-project-2,#story-project-3,#story-project-4,#story-project-5"))];targets.forEach(el=>el.classList.add("storyboard-scroll-fade-target"));const reset=()=>targets.forEach(el=>el.style.removeProperty("--scroll-proximity-opacity"));const updateFade=()=>{frame=0;const rect=hero.getBoundingClientRect();const active=rect.bottom>0&&rect.top<innerHeight;if(!active){reset();return}const range=Math.max(240,innerHeight*.58);targets.forEach(el=>{const r=el.getBoundingClientRect();const gap=r.bottom<rect.top?rect.top-r.bottom:r.top>rect.bottom?r.top-rect.bottom:0;const opacity=.3+.7*Math.min(1,gap/range);el.style.setProperty("--scroll-proximity-opacity",opacity.toFixed(3))})};const schedule=()=>{if(!frame)frame=requestAnimationFrame(updateFade)};const observer=new IntersectionObserver(entries=>{const active=entries.some(e=>e.isIntersecting);body.classList.toggle("storyboard-video-visible",active);schedule()},{threshold:.01});observer.observe(hero);addEventListener("scroll",schedule,{passive:true});addEventListener("resize",schedule,{passive:true});hero.addEventListener("canplay",()=>hero.play().catch(()=>{}),{once:true});updateFade()})();
+(() => {
+  const hero = document.querySelector(".storyboard-hero-video");
+  if (!hero) return;
+
+  const body = document.body;
+  const heroObserver = new IntersectionObserver((entries) => {
+    const visible = entries.some(entry => entry.isIntersecting);
+    body.classList.toggle("storyboard-video-visible", visible);
+  }, { threshold: 0.01 });
+  heroObserver.observe(hero);
+
+  const projects = [...document.querySelectorAll(
+    "#story-project-1, #story-project-2, #story-project-3, #story-project-4, #story-project-5"
+  )];
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("portfolio-scroll-reveal", "is-in-view");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -7% 0px", threshold: 0.01 });
+
+  projects.forEach(project => {
+    project.classList.add("portfolio-scroll-reveal");
+    revealObserver.observe(project);
+  });
+
+  const startPlayback = () => {
+    if (document.visibilityState === "hidden") return;
+    hero.play().catch(() => {});
+  };
+  hero.addEventListener("canplay", startPlayback, { once: true });
+  document.addEventListener("visibilitychange", startPlayback);
+  if (hero.readyState >= 3) startPlayback();
+})();
