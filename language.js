@@ -140,6 +140,8 @@
     try { localStorage.setItem("portfolio-language", language); } catch (_) {}
   };
 
+  window.portfolioSetLanguage = setLanguage;
+
   let language = "en";
   try { language = (localStorage.getItem("portfolio-language") || "").startsWith("zh") ? "zh" : "en"; } catch (_) {}
   setLanguage(language);
