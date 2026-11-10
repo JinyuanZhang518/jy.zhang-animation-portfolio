@@ -951,3 +951,123 @@ body.storyboard-video-visible{background-color:#070707!important;transition:back
   mask-image:linear-gradient(to right,transparent 0%,#000 15%,#000 85%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 20%,#000 72%,transparent 100%)!important;
   mask-composite:intersect!important
 }
+
+
+/* 2026-11-10 final corrections: enter from outside the viewport, never clip into side slivers. */
+body.visual-page .visual-showcase-list.visual-marquee,
+body.visual-page .seed-style-row.visual-marquee{
+  position:relative!important;left:50%!important;width:100vw!important;max-width:100vw!important;
+  margin:0 0 0 0!important;transform:translateX(-50%)!important;overflow:hidden!important;
+  padding:8px 0 18px!important;-webkit-mask:none!important;mask:none!important
+}
+body.visual-page .visual-marquee-track{display:flex!important;width:max-content!important;flex-wrap:nowrap!important}
+body.visual-page .visual-marquee-track.marquee-enter{
+  animation:visual-marquee-enter 1.55s cubic-bezier(.2,.72,.25,1) both!important;
+  animation-play-state:running!important
+}
+@keyframes visual-marquee-enter{from{transform:translate3d(100vw,0,0)}to{transform:translate3d(0,0,0)}}
+body.visual-page .visual-marquee-track.marquee-entered{
+  animation:visual-marquee-left var(--marquee-duration,72s) linear infinite!important
+}
+body.visual-page .visual-marquee-track.marquee-entered.motion-paused{animation-play-state:paused!important}
+body.visual-page .visual-marquee-group img{opacity:1!important;visibility:visible!important}
+
+/* Blend the homepage GIF's white matte through its actual image-viewer button wrapper. */
+.home-page .home-showcase{background:transparent!important;isolation:auto!important}
+.home-page .home-showcase>button,
+.home-page .home-showcase button,
+.home-page .home-showcase img{
+  background:transparent!important;border:0!important;box-shadow:none!important
+}
+.home-page .home-showcase button{padding:0!important;mix-blend-mode:multiply!important}
+.home-page .home-showcase img{display:block!important;mix-blend-mode:multiply!important}
+
+/* The directory opens beside a stationary rail and cannot stretch after a click. */
+body.quick-nav-page>aside.page-quick-nav,
+body.quick-nav-page>aside.page-quick-nav.is-expanded{
+  box-sizing:border-box!important;position:fixed!important;z-index:1000!important;
+  right:12px!important;top:50%!important;left:auto!important;bottom:auto!important;
+  width:42px!important;min-width:42px!important;max-width:42px!important;flex:0 0 42px!important;
+  height:58px!important;min-height:58px!important;max-height:58px!important;
+  margin:0!important;padding:0!important;overflow:visible!important;transform:translateY(-50%)!important;
+  transition:none!important
+}
+body.quick-nav-page>aside.page-quick-nav>.quick-nav-trigger{
+  box-sizing:border-box!important;width:38px!important;min-width:38px!important;height:58px!important;
+  min-height:58px!important;margin:0 auto!important;display:flex!important;align-items:center!important;
+  justify-content:center!important;flex-direction:column!important;text-align:center!important
+}
+body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{
+  position:absolute!important;right:calc(100% + 5px)!important;left:auto!important;top:50%!important;
+  transform:translateY(-50%)!important;width:min(52px,calc(100vw - 56px))!important;
+  min-width:0!important;max-width:min(52px,calc(100vw - 56px))!important;
+  max-height:76vh!important;overflow-y:auto!important;overflow-x:hidden!important;
+  display:none!important;flex-direction:column!important;align-items:stretch!important;
+  gap:2px!important;padding:4px!important;margin:0!important;
+  background:rgba(235,235,235,.62)!important;border:1px solid rgba(90,90,90,.2)!important;
+  border-radius:2px!important;box-shadow:0 4px 18px rgba(0,0,0,.10)!important;
+  backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important
+}
+body.quick-nav-page>aside.page-quick-nav.is-expanded>.page-quick-nav-links{
+  display:flex!important
+}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a{
+  box-sizing:border-box!important;display:flex!important;width:100%!important;min-height:34px!important;
+  height:auto!important;align-items:center!important;justify-content:center!important;
+  padding:4px 2px!important;margin:0!important;border:0!important;border-bottom:1px solid rgba(100,100,100,.16)!important;
+  background:transparent!important;text-align:center!important;white-space:normal!important;
+  font-size:9px!important;line-height:1.22!important;font-weight:600!important;overflow-wrap:anywhere!important
+}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a:last-child{border-bottom:0!important}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a>span:not(.quick-nav-icon){
+  display:block!important;width:100%!important;text-align:center!important;overflow-wrap:anywhere!important
+}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links .quick-nav-icon{display:none!important}
+body.quick-nav-page>aside.page-quick-nav .quick-nav-rail-label{text-align:center!important}
+@media(max-width:700px){
+ body.quick-nav-page>aside.page-quick-nav,body.quick-nav-page>aside.page-quick-nav.is-expanded{
+   right:5px!important;width:38px!important;min-width:38px!important;max-width:38px!important;flex-basis:38px!important
+ }
+ body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{
+   width:min(52px,calc(100vw - 48px))!important;max-width:min(52px,calc(100vw - 48px))!important
+ }
+}
+
+/* Subtle vertical reveal for every meaningful content unit, not only the top-level page section. */
+.page-content-shell main .portfolio-scroll-reveal{
+  opacity:var(--portfolio-reveal-opacity,1)!important;
+  transform:translate3d(0,var(--portfolio-reveal-y,0px),0)!important;
+  transition:opacity .62s ease,transform .72s cubic-bezier(.2,.72,.25,1)!important;
+  will-change:opacity,transform
+}
+.page-content-shell main .portfolio-scroll-reveal:not(.is-in-view){
+  --portfolio-reveal-opacity:0;--portfolio-reveal-y:22px
+}
+.page-content-shell main .portfolio-scroll-reveal.is-in-view{
+  --portfolio-reveal-opacity:1;--portfolio-reveal-y:0px
+}
+@media(prefers-reduced-motion:reduce){
+ .page-content-shell main .portfolio-scroll-reveal{opacity:1!important;transform:none!important;transition:none!important;will-change:auto!important}
+}
+
+/* Center the hero video full-bleed and dissolve every edge into the page field. */
+body.storyboard-video-visible{background-color:#070707!important}
+.storyboard-hero-video-wrap{
+ position:relative!important;left:50%!important;transform:translateX(-50%)!important;
+ width:100vw!important;max-width:100vw!important;margin-left:0!important;overflow:hidden!important;
+ background:#070707!important
+}
+.storyboard-hero-video-wrap::after{
+ content:""!important;position:absolute!important;z-index:1!important;inset:0!important;
+ pointer-events:none!important;
+ background:
+  linear-gradient(to bottom,transparent 0%,rgba(7,7,7,0) 53%,rgba(7,7,7,.34) 76%,#070707 100%),
+  linear-gradient(to right,rgba(7,7,7,.42) 0%,transparent 10%,transparent 90%,rgba(7,7,7,.42) 100%)!important
+}
+.storyboard-hero-video{z-index:0!important;mask:none!important;-webkit-mask:none!important}
+@media(max-width:700px){
+ body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{font-size:9px!important}
+ .storyboard-hero-video-wrap::after{
+  background:linear-gradient(to bottom,transparent 0%,rgba(7,7,7,.12) 62%,#070707 100%),linear-gradient(to right,rgba(7,7,7,.36),transparent 8%,transparent 92%,rgba(7,7,7,.36))!important
+ }
+}
