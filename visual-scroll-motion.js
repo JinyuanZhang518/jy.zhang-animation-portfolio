@@ -5,9 +5,9 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const selector = [
     ".page-content-shell>main>.visual-film-project",
-    ".page-content-shell>main>.visual-showcase-list img",
-    ".page-content-shell>main>.seed-style-row img",
-    ".page-content-shell>main>figure.visual-motion"
+    ".page-content-shell>main .visual-showcase-list img",
+    ".page-content-shell>main .seed-style-row img",
+    ".page-content-shell>main figure.visual-motion"
   ].join(",");
 
   let panels = [];
