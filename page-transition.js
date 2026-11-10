@@ -1,21 +1,28 @@
 (() => {
-  const contentSelectors = ["main", ".page-quick-nav", ".site-footer"];
-  const content = () => contentSelectors.flatMap((selector) =>
+  const selectors = ["main", ".page-quick-nav", ".site-footer"];
+  const content = () => selectors.flatMap((selector) =>
     Array.from(document.querySelectorAll(selector))
   );
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const supportsTransitions = CSS.supports("view-transition-name: root");
+  const nativeNavigationTransitions = supportsTransitions && !reduceMotion;
 
-  const entering = content();
-  entering.forEach((element) => element.classList.add("page-transition-entering"));
-  window.setTimeout(() => {
-    entering.forEach((element) => element.classList.remove("page-transition-entering"));
-  }, 380);
+  // Modern browsers animate cross-page navigation natively. The header remains
+  // a shared, static element; the named page regions below the divider fade.
+  if (!nativeNavigationTransitions) {
+    const entering = content();
+    entering.forEach((element) => element.classList.add("page-transition-entering"));
+    window.setTimeout(() => {
+      entering.forEach((element) => element.classList.remove("page-transition-entering"));
+    }, 380);
+  }
 
   window.addEventListener("pageshow", () => {
     content().forEach((element) => element.classList.remove("page-transition-leaving"));
   });
 
   document.addEventListener("click", (event) => {
-    if (event.defaultPrevented || event.button !== 0 ||
+    if (nativeNavigationTransitions || event.defaultPrevented || event.button !== 0 ||
         event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
     const target = event.target instanceof Element ? event.target : event.target?.parentElement;
@@ -30,6 +37,6 @@
 
     event.preventDefault();
     content().forEach((element) => element.classList.add("page-transition-leaving"));
-    window.setTimeout(() => window.location.assign(destination.href), 290);
+    window.setTimeout(() => window.location.assign(destination.href), 180);
   });
 })();
