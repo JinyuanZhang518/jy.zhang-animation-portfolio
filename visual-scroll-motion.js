@@ -52,26 +52,43 @@
     list.addEventListener("mouseleave", () => { if (!reduceMotion.matches) list.classList.remove("motion-paused"); });
     list.addEventListener("focusin", () => list.classList.add("motion-paused"));
     list.addEventListener("focusout", () => { if (!reduceMotion.matches) list.classList.remove("motion-paused"); });
+    let introStarted = false;
+    const startMarquee = () => {
+      if (introStarted || reduceMotion.matches) {
+        if (reduceMotion.matches) track.classList.add("marquee-entered");
+        return;
+      }
+      introStarted = true;
+      track.classList.remove("marquee-entered");
+      track.classList.add("marquee-enter");
+      track.addEventListener("animationend", (event) => {
+        if (event.animationName !== "visual-marquee-enter") return;
+        track.classList.remove("marquee-enter");
+        track.classList.add("marquee-entered");
+      }, { once: true });
+    };
     if ("IntersectionObserver" in window) {
       list.classList.add("motion-offscreen");
-      let introStarted = false;
       const observer = new IntersectionObserver(([entry]) => {
-        list.classList.toggle("motion-offscreen", !entry.isIntersecting);
-        if (entry.isIntersecting && !introStarted && !reduceMotion.matches) {
-          introStarted = true;
-          track.classList.add("marquee-enter");
-          track.addEventListener("animationend", (event) => {
-            if (event.animationName === "visual-marquee-enter") track.classList.remove("marquee-enter");
-          });
-        }
-      }, { threshold: 0, rootMargin: "120px 0px" });
+        if (!entry.isIntersecting) return;
+        list.classList.remove("motion-offscreen");
+        startMarquee();
+        observer.disconnect();
+      }, { threshold: 0, rootMargin: "0px" });
       observer.observe(list);
+    } else {
+      startMarquee();
     }
   }
 
   reduceMotion.addEventListener?.("change", (event) => {
     document.querySelectorAll(".visual-marquee").forEach((list) => {
       list.classList.toggle("motion-paused", event.matches || list.matches(":hover, :focus-within"));
+      const track = list.querySelector(".visual-marquee-track");
+      if (event.matches) {
+        track?.classList.remove("marquee-enter");
+        track?.classList.add("marquee-entered");
+      }
     });
   });
 })();
