@@ -5,7 +5,10 @@
   );
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const supportsTransitions = CSS.supports("view-transition-name: root");
-  const nativeNavigationTransitions = supportsTransitions && !reduceMotion;
+  const supportsCrossDocumentTransitions = supportsTransitions &&
+    "onpageswap" in window && "onpagereveal" in window &&
+    typeof document.startViewTransition === "function";
+  const nativeNavigationTransitions = supportsCrossDocumentTransitions && !reduceMotion;
 
   // Modern browsers animate cross-page navigation natively. The header remains
   // a shared, static element; the named page regions below the divider fade.
@@ -37,6 +40,6 @@
 
     event.preventDefault();
     content().forEach((element) => element.classList.add("page-transition-leaving"));
-    window.setTimeout(() => window.location.assign(destination.href), 180);
+    window.setTimeout(() => window.location.assign(destination.href), 300);
   });
 })();
