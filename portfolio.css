@@ -287,26 +287,35 @@ body:not(.home-page) .site-header .avatar-frame { width: 197px; height: 197px; }
 @media(max-width:700px){.site-introduction{padding:0 8px}.site-header .page-title{font-size:24px;margin:9px auto 6px}.site-header .profile-intro{font-size:12px;line-height:1.55;margin-bottom:14px}.site-header .avatar{width:355px;transform:translate(calc(-50% + 9px),calc(-50% + 6px))}}
 
 
-/* Shared header stays fixed; only the page content below the divider transitions. */
-@view-transition { navigation: auto; }
-.site-header { view-transition-name: portfolio-shared-header; }
-::view-transition-old(portfolio-shared-header),
-::view-transition-new(portfolio-shared-header) {
-  animation: none;
+/* The header is persistent; route changes animate only the content beneath its divider. */
+.page-content-shell { view-transition-name: portfolio-lower-content; }
+::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+::view-transition-old(portfolio-lower-content) {
+  animation: lower-content-out .18s ease both;
   mix-blend-mode: normal;
 }
-::view-transition-old(root) {
-  animation: portfolio-lower-out .2s ease both;
+::view-transition-new(portfolio-lower-content) {
+  animation: lower-content-in .46s cubic-bezier(.22,1,.36,1) both;
+  mix-blend-mode: normal;
 }
-::view-transition-new(root) {
-  animation: portfolio-lower-in .42s cubic-bezier(.22,1,.36,1) both;
+@keyframes lower-content-out {
+  to { opacity: 0; transform: translateX(-20px); }
 }
-@keyframes portfolio-lower-out {
-  to { opacity: 0; transform: translateX(-18px); }
-}
-@keyframes portfolio-lower-in {
-  from { opacity: 0; transform: translateX(22px); }
+@keyframes lower-content-in {
+  from { opacity: 0; transform: translateX(24px); }
   to { opacity: 1; transform: translateX(0); }
+}
+/* Keep the masthead identical on every section. */
+.site-header .site-name { font-size: 30px !important; }
+@media (max-width:700px) {
+  .site-header .site-name { font-size:26px !important; }
+}
+.page-content-shell { will-change: opacity, transform; }
+.page-content-shell.is-leaving { pointer-events:none; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(portfolio-lower-content),
+  ::view-transition-new(portfolio-lower-content) { animation:none !important; }
+  .page-content-shell { scroll-behavior:auto; }
 }
 
 /* The welcome text belongs to the home page, below the persistent divider. */
@@ -344,4 +353,13 @@ body:not(.home-page) .site-header .avatar-frame { width: 197px; height: 197px; }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none; }
+}
+
+/* One shared masthead and divider across every section. */
+.site-header .site-name { font-size:30px !important; }
+.site-header .avatar-frame::after { border:0 !important; }
+.home-page .site-header .avatar-frame::after { border:4px solid #ff1493 !important; }
+@media (max-width:700px) {
+  .site-header .site-name { font-size:26px !important; }
+  .site-header .avatar-frame { width:140px !important; height:140px !important; }
 }
