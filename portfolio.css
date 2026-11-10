@@ -233,3 +233,6 @@ main.page-transition-leaving,
     transition: none !important;
   }
 }
+
+/* Always-visible navigation divider below the site menu. */
+.site-header .site-nav{border-bottom:1px solid #b7b7b7!important;}
