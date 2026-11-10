@@ -1598,3 +1598,36 @@ body.storyboard-video-visible main>#story-project-1{
 @media(prefers-reduced-motion:reduce){
   body.quick-nav-page main>.storyboard-hero-video-wrap{position:relative!important;top:auto!important;margin-bottom:0!important}
 }
+
+
+/* 2026-11-10 targeted layout fixes: keep the Home masthead identical across pages,
+   constrain the second storyboard project's process sheet, and align the More portrait. */
+.site-header{padding-top:128px!important}
+.site-header .avatar-frame{width:197px!important;height:197px!important}
+.site-header .avatar{left:50%!important;top:50%!important;width:520px!important;height:auto!important;
+  margin:0!important;transform:translate(calc(-50% + 12px),calc(-50% + 8px))!important}
+.site-header .site-name{font-size:30px!important}
+.site-header .site-role{font-size:14px!important;letter-spacing:.045em!important}
+.site-header .site-email{font-size:12px!important;letter-spacing:.2em!important;margin:1px 0 25px!important}
+.site-header .site-nav{width:min(920px,100%)!important;padding:13px 15px 17px!important}
+.site-header .avatar-frame::after{border:4px solid #171717!important;z-index:0!important}
+.site-header .avatar{z-index:1!important}
+body.home-page .site-header .avatar{mix-blend-mode:multiply!important;backface-visibility:visible!important;
+  -webkit-backface-visibility:visible!important;will-change:auto!important}
+.process-section img.process-overview{position:static!important;left:auto!important;transform:none!important;
+  display:block!important;width:100%!important;max-width:100%!important;height:auto!important;margin:28px auto 0!important}
+.more-project-avatar .more-avatar-frame{overflow:visible!important}
+.more-project-avatar .more-avatar-frame::after{border:4px solid #171717!important}
+.more-project-avatar .more-avatar-frame img{left:50%!important;top:50%!important;width:520px!important;height:auto!important;
+  margin:0!important;transform:translate(calc(-50% + 12px),calc(-50% + 8px))!important}
+@media(max-width:700px){
+  .site-header{padding:88px 16px 0!important}
+  .site-header .avatar-frame{width:140px!important;height:140px!important}
+  .site-header .avatar{width:355px!important;transform:translate(calc(-50% + 9px),calc(-50% + 6px))!important}
+  .site-header .site-name{font-size:26px!important}
+  .site-header .site-email{margin-bottom:20px!important}
+  .site-header .site-nav{gap:6px!important;padding:10px 4px 15px!important}
+  .more-project-avatar .more-avatar-frame{width:140px!important;height:140px!important}
+  .more-project-avatar .more-avatar-frame img{width:355px!important;
+    transform:translate(calc(-50% + 9px),calc(-50% + 6px))!important}
+}
