@@ -9,23 +9,25 @@
     "onpageswap" in window && "onpagereveal" in window &&
     typeof document.startViewTransition === "function";
   const nativeNavigationTransitions = supportsCrossDocumentTransitions && !reduceMotion;
+  let navigationStarted = false;
 
-  // Modern browsers animate cross-page navigation natively. The header remains
-  // a shared, static element; the named page regions below the divider fade.
+  // Keep the shared header and divider still; gently reveal only page content.
   if (!nativeNavigationTransitions) {
     const entering = content();
     entering.forEach((element) => element.classList.add("page-transition-entering"));
     window.setTimeout(() => {
       entering.forEach((element) => element.classList.remove("page-transition-entering"));
-    }, 380);
+    }, 620);
   }
 
   window.addEventListener("pageshow", () => {
+    navigationStarted = false;
     content().forEach((element) => element.classList.remove("page-transition-leaving"));
   });
 
   document.addEventListener("click", (event) => {
-    if (nativeNavigationTransitions || event.defaultPrevented || event.button !== 0 ||
+    if (navigationStarted || nativeNavigationTransitions || reduceMotion ||
+        event.defaultPrevented || event.button !== 0 ||
         event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
     const target = event.target instanceof Element ? event.target : event.target?.parentElement;
@@ -39,7 +41,8 @@
     if (destination.origin !== window.location.origin || sameDocument) return;
 
     event.preventDefault();
+    navigationStarted = true;
     content().forEach((element) => element.classList.add("page-transition-leaving"));
-    window.setTimeout(() => window.location.assign(destination.href), 300);
+    window.setTimeout(() => window.location.assign(destination.href), 220);
   });
 })();
