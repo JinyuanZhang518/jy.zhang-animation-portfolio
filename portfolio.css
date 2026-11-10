@@ -632,3 +632,8 @@ body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a.is-current{back
 .storyboard-scroll-fade-target{transition:opacity .28s ease-out!important;will-change:opacity}
 @media(max-width:700px){body.quick-nav-page .page-content-shell>main{margin-top:30px!important}body.quick-nav-page>aside.page-quick-nav{width:38px!important}body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{width:min(176px,calc(100vw - 50px))!important;max-width:min(176px,calc(100vw - 50px))!important}}
 @media(prefers-reduced-motion:reduce){.storyboard-scroll-fade-target{transition:none!important}}
+
+/* Tighten the expanding rail against its transparent hover menu. */
+body.quick-nav-page>aside.page-quick-nav.is-expanded{width:42px!important;min-width:42px!important;max-width:42px!important}
+body.quick-nav-page>aside.page-quick-nav.is-expanded>.page-quick-nav-links{right:100%!important;left:auto!important}
+body.quick-nav-page .storyboard-scroll-fade-target{opacity:var(--scroll-proximity-opacity,1)!important}
