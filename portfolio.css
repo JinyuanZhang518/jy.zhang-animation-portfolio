@@ -685,3 +685,20 @@ body.visual-page .page-content-shell>main>.visual-showcase img{border:0!importan
   opacity:1!important;transform:none!important;will-change:auto!important
  }
 }
+
+
+/* Portfolio polish: consistent breathing room, feathered storyboard video, and room for boards. */
+.site-header{padding-top:96px!important}
+.storyboard-hero-video-wrap{margin-bottom:112px!important}
+body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{margin-bottom:112px!important}
+.storyboard-hero-video{
+  -webkit-mask-image:radial-gradient(ellipse 88% 94% at 50% 50%,#000 54%,rgba(0,0,0,.92) 69%,rgba(0,0,0,.52) 86%,transparent 100%)!important;
+  mask-image:radial-gradient(ellipse 88% 94% at 50% 50%,#000 54%,rgba(0,0,0,.92) 69%,rgba(0,0,0,.52) 86%,transparent 100%)!important;
+  -webkit-mask-repeat:no-repeat!important;
+  mask-repeat:no-repeat!important;
+}
+@media(max-width:700px){
+  .site-header{padding:64px 16px 0!important}
+  .storyboard-hero-video-wrap{margin-bottom:76px!important}
+  body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{margin-bottom:76px!important}
+}
