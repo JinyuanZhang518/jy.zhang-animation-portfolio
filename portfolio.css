@@ -744,3 +744,21 @@ body.visual-page figure.visual-motion{padding:0!important;margin-left:0!importan
   body.visual-page .seed-style-row img,
   body.visual-page figure.visual-motion{opacity:1!important;transform:none!important;will-change:auto!important}
 }
+
+
+/* Final responsive pass: room above the shared header and keep every nav item available on phones. */
+.site-header{padding-top:160px!important}
+@media(max-width:700px){
+  .site-header{padding:112px 14px 0!important}
+  .site-nav{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    gap:8px 14px!important;
+    overflow:visible!important;
+    padding:12px 4px 14px!important;
+  }
+  .site-nav a{display:inline-flex!important;font-size:clamp(10px,2.8vw,12px)!important;white-space:nowrap!important}
+  .site-nav a:nth-child(2){display:inline-flex!important}
+}
+main img,main video{max-width:100%;height:auto}
