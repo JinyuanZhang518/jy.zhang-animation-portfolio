@@ -236,3 +236,7 @@ main.page-transition-leaving,
 
 /* Always-visible navigation divider below the site menu. */
 .site-header .site-nav{border-bottom:1px solid #b7b7b7!important;}
+
+/* Persistent high-contrast divider below the navigation, outside page-content fades. */
+.site-header .site-nav{position:relative;border-bottom:0!important;padding-bottom:17px!important}
+.site-header .site-nav::after{content:"";display:block;position:absolute;left:0;right:0;bottom:0;height:2px;background:#b7b7b7;pointer-events:none}
