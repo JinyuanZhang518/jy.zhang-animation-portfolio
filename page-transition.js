@@ -85,6 +85,16 @@
       document.querySelectorAll("aside.page-quick-nav").forEach(node => node.remove());
       shell.replaceChildren(...incomingNodes);
       body.className = parsed.body.className;
+      const floatingNavSrc = parsed.querySelector('head script[src*="floating-nav.js"]')?.getAttribute("src");
+      if (floatingNavSrc) {
+        await new Promise(resolve => {
+          const navScript = document.createElement("script");
+          navScript.src = new URL(floatingNavSrc, url).href;
+          navScript.onload = resolve;
+          navScript.onerror = resolve;
+          document.body.append(navScript);
+        });
+      }
       document.title = parsed.title;
       if (push) history.pushState({ portfolio: true }, "", url.href);
       incomingStyles.forEach(style => {
