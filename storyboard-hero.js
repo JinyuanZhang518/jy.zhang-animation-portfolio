@@ -30,6 +30,5 @@
     hero.play().catch(() => {});
   };
   hero.addEventListener("canplay", startPlayback, { once: true });
-  document.addEventListener("visibilitychange", startPlayback);
   if (hero.readyState >= 3) startPlayback();
 })();
