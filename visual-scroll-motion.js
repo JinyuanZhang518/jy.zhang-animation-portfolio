@@ -1,79 +1,67 @@
 (() => {
-  const body = document.body;
-  if (!body.classList.contains("visual-page")) return;
+  if (!document.body.classList.contains("visual-page")) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const selector = [
-    ".page-content-shell>main>.visual-film-project>img",
-    ".page-content-shell>main .visual-showcase-list img",
-    ".page-content-shell>main .seed-style-row img",
-    ".page-content-shell>main figure.visual-motion"
-  ].join(",");
+  const lists = Array.from(document.querySelectorAll(".visual-showcase-list, .seed-style-row"));
 
-  let panels = [];
-  let raf = 0;
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-  const smoothstep = (start, end, value) => {
-    const t = clamp((value - start) / (end - start), 0, 1);
-    return t * t * (3 - 2 * t);
-  };
+  for (const list of lists) {
+    if (list.dataset.horizontalShowcase === "true") continue;
+    const images = Array.from(list.children).filter((node) => node instanceof HTMLImageElement);
+    if (images.length < 2) continue;
 
-  function warmImages() {
-    const warmLine = (window.scrollY || 0) + (window.innerHeight || 700) * 2;
-    for (const image of document.querySelectorAll(".page-content-shell>main img[loading='lazy']")) {
-      const rect = image.getBoundingClientRect();
-      const documentTop = rect.top + (window.scrollY || 0);
-      if (documentTop < warmLine) image.loading = "eager";
+    list.dataset.horizontalShowcase = "true";
+    list.classList.add("visual-marquee");
+    const track = document.createElement("div");
+    track.className = "visual-marquee-track";
+    const originalGroup = document.createElement("div");
+    originalGroup.className = "visual-marquee-group";
+    originalGroup.setAttribute("role", "list");
+
+    for (const image of images) {
+      image.loading = "eager";
+      image.decoding = "async";
+      image.setAttribute("role", "listitem");
+      originalGroup.append(image);
+    }
+
+    const duplicateGroup = originalGroup.cloneNode(true);
+    duplicateGroup.classList.add("visual-marquee-copy");
+    duplicateGroup.setAttribute("aria-hidden", "true");
+    duplicateGroup.inert = true;
+    duplicateGroup.querySelectorAll("img").forEach((image) => {
+      image.alt = "";
+      image.removeAttribute("role");
+      image.removeAttribute("tabindex");
+      image.removeAttribute("data-enlarge");
+      image.loading = "eager";
+      image.style.pointerEvents = "none";
+    });
+
+    track.append(originalGroup, duplicateGroup);
+    list.replaceChildren(track);
+
+    const updateSpeed = () => {
+      const width = originalGroup.getBoundingClientRect().width;
+      if (width > 0) track.style.setProperty("--marquee-duration", Math.max(24, width / 64) + "s");
+    };
+    originalGroup.querySelectorAll("img").forEach((image) => image.addEventListener("load", updateSpeed, { once: true }));
+    updateSpeed();
+    if ("ResizeObserver" in window) new ResizeObserver(updateSpeed).observe(originalGroup);
+    if (reduceMotion.matches) list.classList.add("motion-paused");
+    list.addEventListener("mouseenter", () => list.classList.add("motion-paused"));
+    list.addEventListener("mouseleave", () => { if (!reduceMotion.matches) list.classList.remove("motion-paused"); });
+    list.addEventListener("focusin", () => list.classList.add("motion-paused"));
+    list.addEventListener("focusout", () => { if (!reduceMotion.matches) list.classList.remove("motion-paused"); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => {
+        list.classList.toggle("motion-offscreen", !entry.isIntersecting);
+      }, { threshold: 0 }).observe(list);
     }
   }
 
-  function collect() {
-    panels = Array.from(document.querySelectorAll(selector));
-    warmImages();
-    update();
-  }
-
-  function update() {
-    raf = 0;
-    warmImages();
-    if (reduceMotion.matches) {
-      for (const panel of panels) {
-        panel.style.removeProperty("--visual-scroll-x");
-        panel.style.removeProperty("--visual-scroll-opacity");
-      }
-      return;
-    }
-
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    const vw = window.innerWidth || document.documentElement.clientWidth;
-
-    for (const panel of panels) {
-      const rect = panel.getBoundingClientRect();
-      const previousX = parseFloat(panel.style.getPropertyValue("--visual-scroll-x")) || 0;
-      const baseLeft = rect.left - previousX;
-      const progress = clamp((vh - rect.top) / (vh + rect.height), 0, 1);
-      const x = (1 - progress) * vw - progress * rect.width - baseLeft;
-      const fadeIn = smoothstep(0.10, 0.28, progress);
-      const fadeOut = 1 - smoothstep(0.72, 0.90, progress);
-      const opacity = clamp(Math.min(fadeIn, fadeOut), 0, 1);
-
-      panel.style.setProperty("--visual-scroll-x", Math.round(x) + "px");
-      panel.style.setProperty("--visual-scroll-opacity", opacity.toFixed(3));
-    }
-  }
-
-  function requestUpdate() {
-    if (!raf) raf = requestAnimationFrame(update);
-  }
-
-  collect();
-  window.addEventListener("scroll", requestUpdate, { passive: true });
-  window.addEventListener("resize", collect, { passive: true });
-  window.addEventListener("pageshow", collect);
-  reduceMotion.addEventListener?.("change", collect);
-
-  if ("MutationObserver" in window) {
-    const root = document.querySelector(".page-content-shell") || body;
-    new MutationObserver(collect).observe(root, { childList: true, subtree: true });
-  }
+  reduceMotion.addEventListener?.("change", (event) => {
+    document.querySelectorAll(".visual-marquee").forEach((list) => {
+      list.classList.toggle("motion-paused", event.matches || list.matches(":hover, :focus-within"));
+    });
+  });
 })();
