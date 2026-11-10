@@ -866,3 +866,88 @@ body.visual-page .visual-process .visual-showcase-list.visual-marquee img:last-c
   body.visual-page .visual-showcase-list.visual-marquee,
   body.visual-page .seed-style-row.visual-marquee{overflow-x:auto!important}
 }
+
+
+/* 2026-11-10 polish: full-screen showcase entrance, compact floating directory,
+   scroll reveals, transparent homepage artwork, and a full-edge storyboard fade. */
+body.visual-page .visual-showcase-list.visual-marquee,
+body.visual-page .seed-style-row.visual-marquee{
+  position:relative!important;left:50%!important;width:100vw!important;max-width:100vw!important;
+  margin-left:0!important;transform:translateX(-50%)!important;overflow:hidden!important;
+  -webkit-mask-image:none!important;mask-image:none!important
+}
+body.visual-page .visual-marquee-track{
+  animation:visual-marquee-left var(--marquee-duration,72s) linear infinite!important;
+  animation-play-state:running!important
+}
+body.visual-page .visual-marquee-track.marquee-enter{
+  animation:visual-marquee-enter 1.55s cubic-bezier(.2,.72,.25,1) both!important
+}
+@keyframes visual-marquee-enter{from{transform:translate3d(100vw,0,0)}to{transform:translate3d(0,0,0)}}
+@keyframes visual-marquee-left{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+body.visual-page .visual-showcase-list.visual-marquee.motion-paused .visual-marquee-track,
+body.visual-page .seed-style-row.visual-marquee.motion-paused .visual-marquee-track,
+body.visual-page .visual-showcase-list.visual-marquee.motion-offscreen .visual-marquee-track,
+body.visual-page .seed-style-row.visual-marquee.motion-offscreen .visual-marquee-track{animation-play-state:paused!important}
+
+/* The GIF's white matte blends into the page instead of appearing as a panel. */
+.home-page .home-showcase,.home-page .home-showcase>img{background:transparent!important}
+.home-page .home-showcase>img{mix-blend-mode:multiply!important}
+
+/* Keep the right rail fixed-size; its translucent label panel opens beside it. */
+body.quick-nav-page>aside.page-quick-nav,
+body.quick-nav-page>aside.page-quick-nav.is-expanded{
+  position:fixed!important;z-index:1000!important;width:42px!important;min-width:42px!important;
+  max-width:42px!important;flex:0 0 42px!important;transition:none!important
+}
+body.quick-nav-page>aside.page-quick-nav>.quick-nav-trigger{
+  display:flex!important;width:38px!important;min-width:38px!important;height:58px!important;
+  min-height:58px!important;align-items:center!important;justify-content:center!important
+}
+body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{
+  right:calc(100% + 4px)!important;left:auto!important;width:min(104px,calc(100vw - 54px))!important;
+  min-width:0!important;max-width:min(104px,calc(100vw - 54px))!important;padding:6px!important;gap:3px!important
+}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a{
+  display:flex!important;min-height:32px!important;align-items:center!important;justify-content:center!important;
+  padding:5px 4px!important;text-align:center!important;line-height:1.35!important;white-space:normal!important
+}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a>span:not(.quick-nav-icon){
+  display:block!important;width:100%!important;text-align:center!important;overflow-wrap:anywhere!important;font-size:10px!important
+}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links .quick-nav-icon{display:none!important}
+body.quick-nav-page>aside.page-quick-nav .quick-nav-rail-label{text-align:center!important}
+@media(max-width:700px){
+  body.quick-nav-page>aside.page-quick-nav,body.quick-nav-page>aside.page-quick-nav.is-expanded{
+    width:38px!important;min-width:38px!important;max-width:38px!important;flex-basis:38px!important
+  }
+  body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{
+    width:min(104px,calc(100vw - 48px))!important;max-width:min(104px,calc(100vw - 48px))!important
+  }
+}
+
+/* Reveal main content blocks when they enter the viewport during vertical scroll. */
+.page-content-shell main>.portfolio-scroll-reveal{
+  opacity:calc(var(--portfolio-reveal-opacity,1) * var(--scroll-proximity-opacity,1))!important;
+  translate:0 var(--portfolio-reveal-y,0px)!important;
+  transition:opacity .72s ease,translate .78s cubic-bezier(.2,.72,.25,1)!important;
+  will-change:opacity,translate
+}
+.page-content-shell main>.portfolio-scroll-reveal:not(.is-in-view){--portfolio-reveal-opacity:0;--portfolio-reveal-y:24px}
+.page-content-shell main>.portfolio-scroll-reveal.is-in-view{--portfolio-reveal-opacity:1;--portfolio-reveal-y:0px}
+@media(prefers-reduced-motion:reduce){
+  .page-content-shell main>.portfolio-scroll-reveal{opacity:1!important;translate:none!important;transition:none!important;will-change:auto!important}
+  body.visual-page .visual-marquee-track.marquee-enter{animation:none!important}
+}
+
+/* Let the opening frame fade on all four sides into the dark field, including
+   its lower edge where it meets the first 2D animation section. */
+body.storyboard-video-visible{background-color:#070707!important;transition:background-color .85s ease!important}
+.storyboard-hero-video-wrap{background:#070707!important;overflow:hidden!important;position:relative!important}
+.storyboard-hero-video{
+  background:transparent!important;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 15%,#000 85%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 20%,#000 72%,transparent 100%)!important;
+  -webkit-mask-composite:source-in!important;
+  mask-image:linear-gradient(to right,transparent 0%,#000 15%,#000 85%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 20%,#000 72%,transparent 100%)!important;
+  mask-composite:intersect!important
+}
