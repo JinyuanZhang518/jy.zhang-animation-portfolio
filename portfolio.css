@@ -702,3 +702,45 @@ body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{margin-
   .storyboard-hero-video-wrap{margin-bottom:76px!important}
   body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{margin-bottom:76px!important}
 }
+
+
+/* November 10 responsive polish: visible masthead breathing room and borderless motion artwork. */
+.site-header{padding-top:128px!important}
+@media(max-width:700px){.site-header{padding:88px 16px 0!important}}
+.home-page .avatar-frame{overflow:visible!important;isolation:isolate}
+.home-page .avatar{display:block!important;max-width:none!important;height:auto!important;object-fit:contain!important;image-rendering:auto!important;backface-visibility:visible!important}
+.home-page .home-showcase{display:block!important;position:relative!important;width:min(100%,1440px)!important;max-width:1440px!important;margin:28px auto 0!important;padding:0!important;overflow:visible!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.home-page .home-showcase>img{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;object-fit:contain!important;image-rendering:auto!important}
+.storyboard-hero-video-wrap{margin-bottom:156px!important;overflow:visible!important;background:transparent!important}
+body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{margin-bottom:156px!important}
+.storyboard-hero-video{display:block!important;width:100%!important;height:auto!important;max-width:none!important;object-fit:contain!important;background:transparent!important;-webkit-mask-image:radial-gradient(ellipse 78% 74% at 50% 50%,#000 43%,rgba(0,0,0,.96) 59%,rgba(0,0,0,.72) 72%,rgba(0,0,0,.30) 88%,transparent 100%)!important;mask-image:radial-gradient(ellipse 78% 74% at 50% 50%,#000 43%,rgba(0,0,0,.96) 59%,rgba(0,0,0,.72) 72%,rgba(0,0,0,.30) 88%,transparent 100%)!important;-webkit-mask-repeat:no-repeat!important;mask-repeat:no-repeat!important;-webkit-mask-size:100% 100%!important;mask-size:100% 100%!important}
+body.visual-page .page-content-shell>main{overflow:visible!important}
+body.visual-page .page-content-shell>main>.visual-film-project,
+body.visual-page .page-content-shell>main>.visual-showcase,
+body.visual-page .page-content-shell>main>.process-divider{transform:none!important;opacity:1!important;will-change:auto!important;border:0!important;box-shadow:none!important;background:transparent!important}
+body.visual-page .page-content-shell>main>.visual-film-project{padding:0!important}
+body.visual-page .page-content-shell>main>.visual-showcase{padding-left:0!important;padding-right:0!important}
+body.visual-page .visual-film-project>img,
+body.visual-page .visual-showcase-list img,
+body.visual-page .seed-style-row img,
+body.visual-page figure.visual-motion{
+  border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;
+  will-change:transform,opacity;opacity:var(--visual-scroll-opacity,1);
+  transform:translate3d(var(--visual-scroll-x,0px),0,0)!important;
+  transition:none!important
+}
+body.visual-page figure.visual-motion{padding:0!important;margin-left:0!important;margin-right:0!important}
+@media(max-width:700px){
+  .storyboard-hero-video-wrap{margin-bottom:104px!important}
+  body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{margin-bottom:104px!important}
+  .home-page .home-showcase{width:100%!important;max-width:100%!important;margin:20px auto 0!important}
+  .home-page .home-showcase>img{width:100%!important;height:auto!important}
+  .home-page .avatar-frame{width:140px!important;height:140px!important}
+  .home-page .avatar{width:355px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body.visual-page .visual-film-project>img,
+  body.visual-page .visual-showcase-list img,
+  body.visual-page .seed-style-row img,
+  body.visual-page figure.visual-motion{opacity:1!important;transform:none!important;will-change:auto!important}
+}
