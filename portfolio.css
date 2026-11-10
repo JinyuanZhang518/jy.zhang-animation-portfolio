@@ -1071,3 +1071,14 @@ body.storyboard-video-visible{background-color:#070707!important}
   background:linear-gradient(to bottom,transparent 0%,rgba(7,7,7,.12) 62%,#070707 100%),linear-gradient(to right,rgba(7,7,7,.36),transparent 8%,transparent 92%,rgba(7,7,7,.36))!important
  }
 }
+
+
+/* Smoothly merge the hero video bottom into the first storyboard project. */
+body.storyboard-video-visible .storyboard-hero-video-wrap{margin-bottom:0!important}
+body.storyboard-video-visible #story-project-1{
+ background:linear-gradient(to bottom,#070707 0%,rgba(7,7,7,.96) 9%,rgba(7,7,7,.76) 22%,rgba(255,255,255,.075) 43%)!important;
+ border-top:0!important;box-shadow:none!important
+}
+body.storyboard-video-visible .storyboard-hero-video-wrap::after{
+ background:linear-gradient(to bottom,transparent 0%,rgba(7,7,7,.12) 48%,rgba(7,7,7,.62) 78%,#070707 100%),linear-gradient(to right,rgba(7,7,7,.42) 0%,transparent 10%,transparent 90%,rgba(7,7,7,.42) 100%)!important
+}
