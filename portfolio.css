@@ -1338,3 +1338,11 @@ body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links{
    color:#fff!important;
  }
 }
+
+/* Keep quick navigation labels readable even while the rail is expanded or hovered. */
+body.quick-nav-page>aside.page-quick-nav.is-expanded .page-quick-nav-links a>span:not(.quick-nav-icon),
+body.quick-nav-page>aside.page-quick-nav:hover .page-quick-nav-links a>span:not(.quick-nav-icon),
+body.quick-nav-page>aside.page-quick-nav:focus-within .page-quick-nav-links a>span:not(.quick-nav-icon){
+  color:#fff!important;-webkit-text-fill-color:#fff!important;opacity:1!important;visibility:visible!important;
+  text-shadow:0 1px 4px rgba(0,0,0,.95)!important
+}
