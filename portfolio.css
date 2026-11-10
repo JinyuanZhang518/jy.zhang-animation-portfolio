@@ -420,3 +420,20 @@ body, .home-page .home-showcase, .home-page .home-showcase picture, .home-page .
  .page-quick-nav-links{max-height:62vh!important}
 }
 @media(prefers-reduced-motion:reduce){.page-quick-nav{transition:none!important}.page-quick-nav-links a{transition:none!important}}
+
+/* Keep project icons visible in the collapsed floating rail. */
+.page-quick-nav{width:54px!important}
+.page-quick-nav-links{display:block!important;max-height:68vh!important;overflow:auto!important}
+.page-quick-nav-links a{width:40px!important;min-height:42px!important;justify-content:center!important;margin:2px auto!important;padding:5px!important;overflow:hidden!important;background:transparent!important}
+.page-quick-nav-links a>span:not(.quick-nav-icon){display:none!important}
+.page-quick-nav:hover .page-quick-nav-links a,
+.page-quick-nav:focus-within .page-quick-nav-links a,
+.page-quick-nav[open] .page-quick-nav-links a{width:auto!important;justify-content:flex-start!important;padding:7px 9px!important}
+.page-quick-nav:hover .page-quick-nav-links a>span:not(.quick-nav-icon),
+.page-quick-nav:focus-within .page-quick-nav-links a>span:not(.quick-nav-icon),
+.page-quick-nav[open] .page-quick-nav-links a>span:not(.quick-nav-icon){display:inline!important}
+@media(max-width:700px){
+ .page-quick-nav{width:46px!important}
+ .page-quick-nav-links{max-height:62vh!important}
+ .page-quick-nav-links a{width:34px!important;min-height:38px!important}
+}
