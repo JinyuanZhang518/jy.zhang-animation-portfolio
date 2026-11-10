@@ -601,3 +601,11 @@ body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a>span.quick-nav-
 body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a>span:not(.quick-nav-icon){display:inline!important;max-width:none!important;overflow:visible!important;opacity:1!important;font-size:11px!important;line-height:1.3!important}
 @media(max-width:700px){body.quick-nav-page>aside.page-quick-nav{right:6px!important}body.quick-nav-page>aside.page-quick-nav .quick-nav-trigger{width:40px!important;min-width:40px!important}}
 @media(prefers-reduced-motion:reduce){.storyboard-scroll-fade-target,body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links{transition:none!important}}
+
+
+/* Correct selectors for the live page-content-shell wrapper. */
+body.quick-nav-page .page-content-shell>main{width:min(1100px,calc(100% - 52px))!important;margin:34px auto 0!important}
+body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{position:relative!important;left:50%!important;transform:translateX(-50%)!important;width:100vw!important;max-width:none!important;margin:0 0 34px!important;padding:0!important;border:0!important;border-radius:0!important;overflow:hidden!important;background:#070707!important;box-shadow:none!important}
+body.storyboard-video-visible .page-content-shell>main{background:transparent!important}
+body.storyboard-video-visible .page-content-shell>main>.storyboard-hero-video-wrap{background:#070707!important}
+@media(max-width:700px){body.quick-nav-page .page-content-shell>main{width:calc(100% - 24px)!important;margin:24px auto 0!important}body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{margin-bottom:24px!important}}
