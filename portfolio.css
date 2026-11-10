@@ -384,3 +384,14 @@ body:not(.home-page) .site-header .avatar-frame { width: 197px; height: 197px; }
   .site-header .site-nav { gap:6px!important; padding:10px 4px 15px!important; }
   .site-header .site-nav a { font-size:11px!important; }
 }
+
+
+/* Restore the original neutral gray background and keep the avatar ring behind the character. */
+:root { --paper:#e8e8e6!important; --soft:#f2f2f0!important; }
+body, .home-page .home-showcase, .home-page .home-showcase picture, .home-page .home-showcase img { background-color:#e8e8e6!important; }
+.site-header .avatar-frame::after { z-index:0!important; }
+.site-header .avatar { z-index:1!important; }
+.home-page .site-header .avatar-frame::after { z-index:0!important; }
+.more-avatar-frame::after { z-index:0!important; }
+.more-avatar-frame img { z-index:1!important; }
+@media(max-width:700px) { body { background-color:#e8e8e6!important; } }
