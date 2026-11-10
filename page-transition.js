@@ -81,6 +81,8 @@
       }
 
       cleanOldPage();
+      // Remove the previous route's floating directory before inserting the next route.
+      document.querySelectorAll("aside.page-quick-nav").forEach(node => node.remove());
       shell.replaceChildren(...incomingNodes);
       body.className = parsed.body.className;
       document.title = parsed.title;
