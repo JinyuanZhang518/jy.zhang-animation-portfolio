@@ -205,19 +205,33 @@ body{background:#e8e8e6}
 
 
 
-/* Page transitions affect only the content below the navigation divider. */
-main.page-transition-entering,
+/* Refined page transition: content below the navigation fades with a soft, restrained lift. */
+main.page-transition-entering {
+  animation: portfolioContentEnter .56s cubic-bezier(.22,1,.36,1) both;
+  will-change: opacity, transform;
+}
 .page-quick-nav.page-transition-entering,
 .site-footer.page-transition-entering {
-  animation: contentOnlyFadeIn .34s ease both;
+  animation: portfolioDetailsEnter .46s cubic-bezier(.22,1,.36,1) both;
+  will-change: opacity;
 }
-main.page-transition-leaving,
+main.page-transition-leaving {
+  opacity: 0 !important;
+  transform: translateY(4px);
+  transition: opacity .22s cubic-bezier(.4,0,.2,1), transform .22s cubic-bezier(.4,0,.2,1) !important;
+  will-change: opacity, transform;
+}
 .page-quick-nav.page-transition-leaving,
 .site-footer.page-transition-leaving {
   opacity: 0 !important;
-  transition: opacity .28s ease !important;
+  transition: opacity .22s cubic-bezier(.4,0,.2,1) !important;
+  will-change: opacity;
 }
-@keyframes contentOnlyFadeIn {
+@keyframes portfolioContentEnter {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes portfolioDetailsEnter {
   from { opacity: 0; }
   to { opacity: 1; }
 }
@@ -230,6 +244,7 @@ main.page-transition-leaving,
   .site-footer.page-transition-leaving {
     animation: none !important;
     opacity: 1 !important;
+    transform: none !important;
     transition: none !important;
   }
 }
@@ -251,12 +266,12 @@ main { view-transition-name: page-content; }
 ::view-transition-new(root) { animation: none; }
 ::view-transition-old(site-header),
 ::view-transition-new(site-header) { animation: none; }
-::view-transition-old(page-content) { animation: portfolio-fade-out .16s ease both; }
-::view-transition-new(page-content) { animation: portfolio-fade-in .24s ease both; }
-::view-transition-old(project-directory) { animation: portfolio-fade-out .16s ease both; }
-::view-transition-new(project-directory) { animation: portfolio-fade-in .24s ease both; }
-::view-transition-old(page-footer) { animation: portfolio-fade-out .16s ease both; }
-::view-transition-new(page-footer) { animation: portfolio-fade-in .24s ease both; }
+::view-transition-old(page-content) { animation: portfolio-fade-out .22s cubic-bezier(.4,0,.2,1) both; }
+::view-transition-new(page-content) { animation: portfolio-fade-in .56s cubic-bezier(.22,1,.36,1) both; }
+::view-transition-old(project-directory) { animation: portfolio-fade-out .22s cubic-bezier(.4,0,.2,1) both; }
+::view-transition-new(project-directory) { animation: portfolio-fade-in .46s cubic-bezier(.22,1,.36,1) both; }
+::view-transition-old(page-footer) { animation: portfolio-fade-out .22s cubic-bezier(.4,0,.2,1) both; }
+::view-transition-new(page-footer) { animation: portfolio-fade-in .46s cubic-bezier(.22,1,.36,1) both; }
 @keyframes portfolio-fade-out { to { opacity: 0; } }
 @keyframes portfolio-fade-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
