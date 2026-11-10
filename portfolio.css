@@ -208,10 +208,14 @@ body{background:#e8e8e6}
 .site-nav{border-bottom:1px solid rgba(70,70,75,.28)}
 .home-page .avatar-frame::after{border-color:#e0218a}
 body.more-page{background:#fff;transition:background-color .3s ease}
-html.page-transitions body{animation:sitePageFadeIn .3s ease both}
-html.page-transitions.is-leaving body{opacity:0;transition:opacity .22s ease}
-@keyframes sitePageFadeIn{from{opacity:0}to{opacity:1}}
+html.page-transitions main,
+html.page-transitions .site-footer{animation:siteContentFadeIn .3s ease both}
+html.page-transitions.is-leaving main,
+html.page-transitions.is-leaving .site-footer{opacity:0;transition:opacity .22s ease}
+@keyframes siteContentFadeIn{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){
- html.page-transitions body{animation:none!important;transition:none!important}
- html.page-transitions.is-leaving body{opacity:1!important}
+ html.page-transitions main,
+ html.page-transitions .site-footer{animation:none!important;transition:none!important}
+ html.page-transitions.is-leaving main,
+ html.page-transitions.is-leaving .site-footer{opacity:1!important}
 }
