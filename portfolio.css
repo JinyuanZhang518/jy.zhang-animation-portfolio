@@ -609,3 +609,26 @@ body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{positio
 body.storyboard-video-visible .page-content-shell>main{background:transparent!important}
 body.storyboard-video-visible .page-content-shell>main>.storyboard-hero-video-wrap{background:#070707!important}
 @media(max-width:700px){body.quick-nav-page .page-content-shell>main{width:calc(100% - 24px)!important;margin:24px auto 0!important}body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{margin-bottom:24px!important}}
+
+
+/* Immersive storyboard opening: keep the full-bleed frame clipped to the viewport. */
+html,body{overflow-x:clip!important}
+body.quick-nav-page .page-content-shell>main{margin-top:46px!important}
+body.quick-nav-page .page-content-shell>main>.storyboard-hero-video-wrap{background:transparent!important}
+body.quick-nav-page .storyboard-hero-video{display:block!important;width:100%!important;height:auto!important;max-width:none!important;object-fit:contain!important;background:transparent!important}
+body.storyboard-video-visible{background-color:#070707!important}
+body.storyboard-video-visible .page-content-shell>main,
+body.storyboard-video-visible .page-content-shell>main>.storyboard-hero-video-wrap{background:transparent!important}
+body.quick-nav-page>aside.page-quick-nav{width:42px!important}
+body.quick-nav-page>aside.page-quick-nav .quick-nav-trigger{width:36px!important;min-width:36px!important;height:64px!important;min-height:64px!important;border-radius:22px!important;opacity:.7!important;transition:opacity .2s ease,background-color .2s ease!important}
+body.quick-nav-page>aside.page-quick-nav:hover .quick-nav-trigger,
+body.quick-nav-page>aside.page-quick-nav.is-expanded .quick-nav-trigger{opacity:1!important}
+body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{position:absolute!important;top:50%!important;right:100%!important;left:auto!important;bottom:auto!important;display:flex!important;flex-direction:column!important;gap:5px!important;width:min(190px,calc(100vw - 56px))!important;max-width:min(190px,calc(100vw - 56px))!important;max-height:75vh!important;margin:0!important;padding:8px!important;overflow:auto!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translate(0,-50%)!important;background:rgba(27,27,30,.20)!important;border:0!important;border-radius:10px!important;box-shadow:none!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;transition:opacity .2s ease,visibility .2s ease!important}
+body.quick-nav-page>aside.page-quick-nav.is-expanded>.page-quick-nav-links,
+body.quick-nav-page>aside.page-quick-nav:focus-within>.page-quick-nav-links{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a{min-height:32px!important;padding:6px 8px!important;border:0!important;border-radius:6px!important;background:transparent!important}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a:hover,
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a.is-current{background:rgba(255,255,255,.16)!important}
+.storyboard-scroll-fade-target{transition:opacity .28s ease-out!important;will-change:opacity}
+@media(max-width:700px){body.quick-nav-page .page-content-shell>main{margin-top:30px!important}body.quick-nav-page>aside.page-quick-nav{width:38px!important}body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links{width:min(176px,calc(100vw - 50px))!important;max-width:min(176px,calc(100vw - 50px))!important}}
+@media(prefers-reduced-motion:reduce){.storyboard-scroll-fade-target{transition:none!important}}
