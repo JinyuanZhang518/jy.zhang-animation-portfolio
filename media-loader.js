@@ -83,23 +83,29 @@
       if (!isHero) element.dataset.objectUrl = mediaUrl;
 
       if (isVideo) {
-        element.addEventListener("loadeddata", () => say("ready", words.ready()), { once: true });
-        element.addEventListener("playing", () => say("playing", ""), { once: false });
-        element.addEventListener("error", () => say("error", words.format()), { once: true });
+        const alreadyBound = element.dataset.portfolioMediaHandlers === "true";
+        if (!alreadyBound) {
+          element.addEventListener("loadeddata", () => say("ready", words.ready()), { once: true });
+          element.addEventListener("playing", () => say("playing", ""), { once: false });
+          element.addEventListener("error", () => say("error", words.format()), { once: true });
+          const attempt = () => element.play().then(() => say("playing", "")).catch(() => say("tap", words.tap()));
+          element.addEventListener("click", attempt);
+          element.addEventListener("canplay", attempt, { once: true });
+          element.dataset.portfolioMediaHandlers = "true";
+        }
         if (isHero) {
-        if (element.dataset.sharedHeroMediaUrl !== mediaUrl) {
+          if (element.dataset.sharedHeroMediaUrl !== mediaUrl) {
+            element.src = mediaUrl;
+            element.dataset.sharedHeroMediaUrl = mediaUrl;
+            element.load();
+          }
+        } else {
           element.src = mediaUrl;
-          element.dataset.sharedHeroMediaUrl = mediaUrl;
           element.load();
         }
-      } else {
-        element.src = mediaUrl;
-        element.load();
-      }
-        const attempt = () => element.play().then(() => say("playing", "")).catch(() => say("tap", words.tap()));
-        element.addEventListener("click", attempt);
-        element.addEventListener("canplay", attempt, { once: true });
-        if (element.readyState >= 2) attempt();
+        if (element.readyState >= 2 && element.paused) {
+          element.play().then(() => say("playing", "")).catch(() => say("tap", words.tap()));
+        }
       } else {
         element.src = mediaUrl;
       }
