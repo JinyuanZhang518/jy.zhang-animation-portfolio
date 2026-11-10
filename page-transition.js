@@ -89,12 +89,6 @@
         style.dataset.routeStyle = "true";
         document.head.append(style);
       });
-      const navPath = url.pathname;
-      document.querySelectorAll(".site-nav a").forEach(link => {
-        const linkUrl = new URL(link.href, location.href);
-        link.classList.toggle("active", linkUrl.pathname === navPath);
-      });
-
       const selectedLanguage = document.documentElement.lang.startsWith("zh") ? "zh" : "en";
       if (window.portfolioSetLanguage) window.portfolioSetLanguage(selectedLanguage);
       window.scrollTo({ top: 0, behavior: "instant" });
