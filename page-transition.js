@@ -23,10 +23,42 @@
 
   let shell = document.querySelector(".page-content-shell") || makeShell();
   let busy = false;
+  let revealObserver = null;
+  const initScrollReveal = () => {
+    revealObserver?.disconnect();
+    const main = shell.querySelector("main");
+    if (!main) return;
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const blocks = [...main.children].filter(node => node.nodeType === Node.ELEMENT_NODE);
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      blocks.forEach(node => node.classList.add("portfolio-scroll-reveal", "is-in-view"));
+      return;
+    }
+    blocks.forEach(node => {
+      node.classList.add("portfolio-scroll-reveal");
+      node.classList.toggle("is-in-view", node.getBoundingClientRect().top < innerHeight * .92);
+    });
+    revealObserver = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("is-in-view");
+        revealObserver.unobserve(entry.target);
+      }
+    }, { threshold: .04, rootMargin: "0px 0px -7% 0px" });
+    blocks.filter(node => !node.classList.contains("is-in-view")).forEach(node => revealObserver.observe(node));
+  };
   document.head.querySelectorAll("style").forEach(style => style.dataset.routeStyle = "true");
 
   const cleanOldPage = () => {
-    shell.querySelectorAll("video").forEach(video => { try { video.pause(); } catch (_) {} });
+    revealObserver?.disconnect();
+    shell.querySelectorAll("video").forEach(video => {
+      try { video.pause(); video.removeAttribute("src"); video.load(); } catch (_) {}
+      if (video.dataset.objectUrl) { URL.revokeObjectURL(video.dataset.objectUrl); delete video.dataset.objectUrl; }
+    });
+    shell.querySelectorAll("[data-object-url]").forEach(node => {
+      if (node.dataset.objectUrl) URL.revokeObjectURL(node.dataset.objectUrl);
+      delete node.dataset.objectUrl;
+    });
     document.querySelectorAll("dialog.image-viewer, .image-viewer").forEach(node => node.remove());
     document.querySelectorAll("script[data-route-script]").forEach(node => node.remove());
     document.head.querySelectorAll("style[data-route-style]").forEach(node => node.remove());
@@ -109,6 +141,7 @@
       shell.style.transform = reduceMotion ? "none" : "translateX(24px)";
       await runPageScripts(parsed.body, url);
       if (window.portfolioSetLanguage) window.portfolioSetLanguage(selectedLanguage);
+      initScrollReveal();
 
       if (!reduceMotion) {
         shell.animate(
@@ -137,4 +170,5 @@
   });
 
   window.addEventListener("popstate", () => transitionTo(new URL(location.href), false));
+  initScrollReveal();
 })();
