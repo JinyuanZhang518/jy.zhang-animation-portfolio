@@ -15,13 +15,13 @@ body.ai-art-page .language-toggle{background:rgba(9,31,28,.72);color:#f1eadf;bor
 .ai-artwork-page{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;min-height:0!important;background:var(--ai-mural-green);overflow:hidden}
 .ai-mural{position:relative;isolation:isolate;width:100%;height:clamp(540px,78vh,920px);min-height:540px;overflow:hidden;background:var(--ai-mural-green)}
 .ai-mural-base,.ai-mural-cloud{position:absolute;inset:-2%;background-image:url("ai-mural-bg.png?v=20261111-1");background-size:cover;background-position:center;background-repeat:no-repeat}
-.ai-mural-base{z-index:-2;animation:ai-mural-water 24s ease-in-out infinite alternate;will-change:transform,background-position}
-.ai-mural::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,rgba(5,20,18,.24),transparent 28%,transparent 72%,rgba(5,20,18,.3));pointer-events:none}
-.ai-mural-cloud{z-index:0;inset:-1%;opacity:.44;transform-origin:50% 50%;-webkit-mask-image:radial-gradient(ellipse 28% 44% at 50% 50%,#000 68%,transparent 100%);mask-image:radial-gradient(ellipse 28% 44% at 50% 50%,#000 68%,transparent 100%);animation:ai-cloud-ripple 7.5s ease-in-out infinite;will-change:transform,opacity}
-.ai-mural-content{position:absolute;z-index:2;inset:auto 20px 38px;text-align:center;color:#f5eddf;text-shadow:0 2px 18px rgba(0,0,0,.65)}
+.ai-mural-base{z-index:0;animation:ai-mural-water 24s ease-in-out infinite alternate;will-change:transform,background-position}
+.ai-mural::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(5,20,18,.24),transparent 28%,transparent 72%,rgba(5,20,18,.3));pointer-events:none}
+.ai-mural-cloud{z-index:2;inset:-1%;opacity:.44;transform-origin:50% 50%;-webkit-mask-image:radial-gradient(ellipse 28% 44% at 50% 50%,#000 68%,transparent 100%);mask-image:radial-gradient(ellipse 28% 44% at 50% 50%,#000 68%,transparent 100%);animation:ai-cloud-ripple 7.5s ease-in-out infinite;will-change:transform,opacity}
+.ai-mural-content{position:absolute;z-index:3;inset:auto 20px 38px;text-align:center;color:#f5eddf;text-shadow:0 2px 18px rgba(0,0,0,.65)}
 .ai-mural-content h2{margin:0 0 8px;font-size:clamp(22px,3vw,36px);line-height:1.2;letter-spacing:.18em;font-weight:700}
 .ai-mural-content .coming-soon-message{display:inline-block;margin:0;padding:8px 18px;border:1px solid rgba(221,190,127,.3);background:rgba(6,24,21,.44);color:#e7e0d1;font-size:clamp(13px,1.4vw,17px);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-@keyframes ai-cloud-ripple{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.34}50%{transform:translate3d(0,-5px,0) scale(1.018);opacity:.52}}
+@keyframes ai-cloud-ripple{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.34}50%{transform:translate3d(0,-9px,0) scale(1.045) rotate(.35deg);opacity:.58}}
 @keyframes ai-mural-water{0%{transform:scale(1.02);background-position:50% 50%}100%{transform:scale(1.055);background-position:51% 49%}}
 @media(max-width:700px){.ai-mural{height:68vh;min-height:470px}.ai-mural-base,.ai-mural-cloud{background-size:auto 100%;background-position:center}.ai-mural-cloud{-webkit-mask-image:radial-gradient(ellipse 38% 38% at 50% 50%,#000 68%,transparent 100%);mask-image:radial-gradient(ellipse 38% 38% at 50% 50%,#000 68%,transparent 100%)}.ai-mural-content{inset:auto 12px 24px}.ai-mural-content .coming-soon-message{padding:7px 11px}}
 @media(prefers-reduced-motion:reduce){body,.ai-mural-base,.ai-mural-cloud{transition:none!important;animation:none!important;will-change:auto!important}}
