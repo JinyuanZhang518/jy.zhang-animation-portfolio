@@ -87,6 +87,8 @@
     "AI ARTWORK": "AI 艺术", "AI Artwork": "AI 艺术", "Visual experiments and creative process": "视觉实验与创作过程",
     "Boards, process, animatics, and finished films": "分镜、创作过程、动态分镜与完成作品",
     "AI-assisted visual experiments, process, and final selections.": "AI 辅助视觉实验、创作过程与最终作品。",
+    "An exploration of water, pigment, and cloud.": "水、颜料与云纹的视觉探索。",
+    "AI ARTWORK": "AI 艺术",
     "IMAGE EXPLORATION": "图像探索", "Image Exploration": "图像探索", "Concept experiments and prompt iteration · Placeholder": "概念实验与提示词迭代 · 示例内容",
     "PROCESS": "创作过程", "Selection, refinement, and post-production · Placeholder": "筛选、完善与后期制作 · 示例内容",
     "FINAL SELECTION": "最终作品", "Final Selection": "最终作品", "Artwork and project notes · Placeholder": "作品与项目说明 · 示例内容",
