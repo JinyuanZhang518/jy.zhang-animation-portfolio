@@ -1,13 +1,13 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Artwork | JINYUAN ZHANG</title><link rel="stylesheet" href="portfolio.css?v=20261111-ai-flat-background-v6"><script src="language.js?v=20261111-ai-cloud-motion-v2" defer></script><script src="page-transition.js?v=20261110-preserve-showreel-v1" defer></script><script src="floating-nav.js?v=20261110-route-nav-v5" defer></script><style>
-:root{--ai-mural-green:#22292b;--ai-mural-teal:#22292b}
-html,body{min-height:100%;background:#22292b}
-body.ai-art-page{position:relative;isolation:isolate;min-height:100vh!important;margin:0;color:#eee9df;background:#22292b!important;transition:background-color 1.15s cubic-bezier(.22,.61,.36,1),color .8s ease}
+:root{--ai-mural-green:#343c3d;--ai-mural-teal:#343c3d}
+html,body{min-height:100%;background:#343c3d}
+body.ai-art-page{position:relative;isolation:isolate;min-height:100vh!important;margin:0;color:#eee9df;background:#343c3d!important;transition:background-color 1.15s cubic-bezier(.22,.61,.36,1),color .8s ease}
 .ai-mural-base,.ai-mural-shade,.ai-cloud-motion{position:fixed;inset:0;pointer-events:none}
-.ai-mural-base{z-index:-2;background:#273031}
-.ai-mural-shade{z-index:-1;background:rgba(0,0,0,.12)}
-.ai-cloud-motion{z-index:0;inset:0;background:url("ai-mural-bg.png?v=20261111-cloud-silhouette-v6") center center/min(56vw,780px) auto no-repeat;filter:grayscale(1) brightness(.055) contrast(1.7) url(#cloud-ripple);opacity:.92;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse 24% 30% at 50% 49%,#000 48%,rgba(0,0,0,.86) 68%,transparent 100%);mask-image:radial-gradient(ellipse 24% 30% at 50% 49%,#000 48%,rgba(0,0,0,.86) 68%,transparent 100%);transform-origin:center center;animation:cloud-flow 16s ease-in-out infinite;will-change:transform,filter}
+.ai-mural-base{z-index:0;background:#343c3d}
+.ai-mural-shade{z-index:1;background:rgba(0,0,0,.025)}
+.ai-cloud-motion{z-index:2;inset:0;background:url("ai-mural-bg.png?v=20261111-cloud-silhouette-v7") center center/min(56vw,780px) auto no-repeat;filter:grayscale(1) brightness(.12) contrast(2.1) url(#cloud-ripple);opacity:1;mix-blend-mode:normal;-webkit-mask-image:radial-gradient(ellipse 24% 30% at 50% 49%,#000 48%,rgba(0,0,0,.86) 68%,transparent 100%);mask-image:radial-gradient(ellipse 24% 30% at 50% 49%,#000 48%,rgba(0,0,0,.86) 68%,transparent 100%);transform-origin:center center;animation:cloud-flow 16s ease-in-out infinite;will-change:transform,filter}
 @keyframes cloud-flow{0%,100%{transform:translate3d(0,0,0) scale(1)}30%{transform:translate3d(2px,-1px,0) scale(1.012)}68%{transform:translate3d(-2px,1px,0) scale(1.006)}}
-body.ai-art-page .site-header{position:relative;z-index:1;color:#eee9df;background:transparent!important;border-bottom-color:rgba(185,195,186,.27);text-shadow:0 1px 12px rgba(0,0,0,.75)}
+body.ai-art-page .site-header{position:relative;z-index:3;color:#eee9df;background:transparent!important;border-bottom-color:rgba(185,195,186,.27);text-shadow:0 1px 12px rgba(0,0,0,.75)}
 body.ai-art-page .site-header *{background-color:transparent}
 body.ai-art-page .site-nav{border-bottom:1px solid rgba(185,195,186,.28)}
 body.ai-art-page .site-nav a,body.ai-art-page .site-email a{color:#eee9df}
