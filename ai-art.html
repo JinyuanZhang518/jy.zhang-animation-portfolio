@@ -1,31 +1,26 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Artwork | JINYUAN ZHANG</title><link rel="stylesheet" href="portfolio.css?v=20261111-ai-mural-v1"><script src="language.js?v=20261111-ai-mural-v1" defer></script><script src="page-transition.js?v=20261110-preserve-showreel-v1" defer></script><script src="floating-nav.js?v=20261110-route-nav-v5" defer></script><style>
-:root{--ai-mural-green:#071a17;--ai-mural-teal:#123b37}
-body{transition:background-color 1.15s cubic-bezier(.22,.61,.36,1),color .8s ease}
-body.ai-art-page{background-color:var(--ai-mural-green);color:#f0e8d8}
+:root{--ai-mural-green:#000;--ai-mural-teal:#000}
+body{background:#000!important;color:#f0e8d8;transition:background-color 1.15s cubic-bezier(.22,.61,.36,1),color .8s ease}
+body.ai-art-page{background-color:#000!important;color:#f0e8d8}
 body.ai-art-page .site-header,body.ai-art-page .site-footer{
- color:#f0e8d8;background-color:rgba(7,26,23,.94);
+ color:#f0e8d8;background-color:#000;
  transition:background-color 1.15s cubic-bezier(.22,.61,.36,1),color .8s ease,border-color .8s ease
 }
-body.ai-art-page .site-header{border-bottom-color:rgba(213,177,99,.22)}
-body.ai-art-page .site-nav{border-bottom-color:rgba(213,177,99,.28)}
+body.ai-art-page .site-header{border-bottom-color:rgba(255,255,255,.14)}
+body.ai-art-page .site-nav{border-bottom-color:rgba(255,255,255,.18)}
 body.ai-art-page .site-nav a,body.ai-art-page .site-email a{color:#eee8dd}
-body.ai-art-page .site-role{color:#b7c2b6}
-body.ai-art-page .site-footer{border-top-color:rgba(213,177,99,.22);color:#b7c2b6}
-body.ai-art-page .language-toggle{background:rgba(9,31,28,.72);color:#f1eadf;border-color:rgba(231,210,160,.38)}
-.ai-artwork-page{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;min-height:0!important;background:var(--ai-mural-green);overflow:hidden}
-.ai-mural{position:relative;isolation:isolate;width:100%;height:clamp(540px,78vh,920px);min-height:540px;overflow:hidden;background:var(--ai-mural-green)}
-.ai-mural-base,.ai-mural-cloud{position:absolute;inset:-2%;background-image:url("ai-mural-bg.png?v=20261111-1");background-size:cover;background-position:center;background-repeat:no-repeat}
-.ai-mural-base{z-index:0;animation:ai-mural-water 24s ease-in-out infinite alternate;will-change:transform,background-position}
-.ai-mural::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(5,20,18,.24),transparent 28%,transparent 72%,rgba(5,20,18,.3));pointer-events:none}
-.ai-mural-cloud{z-index:2;inset:-1%;opacity:.44;transform-origin:50% 50%;-webkit-mask-image:radial-gradient(ellipse 28% 44% at 50% 50%,#000 68%,transparent 100%);mask-image:radial-gradient(ellipse 28% 44% at 50% 50%,#000 68%,transparent 100%);animation:ai-cloud-ripple 7.5s ease-in-out infinite;will-change:transform,opacity}
+body.ai-art-page .site-role{color:#b7b7b7}
+body.ai-art-page .site-footer{border-top-color:rgba(255,255,255,.14);color:#b7b7b7}
+body.ai-art-page .language-toggle{background:rgba(20,20,20,.9);color:#f1eadf;border-color:rgba(255,255,255,.3)}
+.ai-artwork-page{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;min-height:0!important;background:#000!important;overflow:hidden}
+.ai-mural{position:relative;isolation:isolate;width:100%;height:clamp(540px,78vh,920px);min-height:540px;overflow:hidden;background:#000}
+.ai-mural-base,.ai-mural-cloud{display:none!important}
+.ai-mural::before{content:none}
 .ai-mural-content{position:absolute;z-index:3;inset:auto 20px 38px;text-align:center;color:#f5eddf;text-shadow:0 2px 18px rgba(0,0,0,.65)}
 .ai-mural-content h2{margin:0 0 8px;font-size:clamp(22px,3vw,36px);line-height:1.2;letter-spacing:.18em;font-weight:700}
-.ai-mural-content .coming-soon-message{display:inline-block;margin:0;padding:8px 18px;border:1px solid rgba(221,190,127,.3);background:rgba(6,24,21,.44);color:#e7e0d1;font-size:clamp(13px,1.4vw,17px);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-@keyframes ai-cloud-ripple{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.34}50%{transform:translate3d(0,-9px,0) scale(1.045) rotate(.35deg);opacity:.58}}
-@keyframes ai-mural-water{0%{transform:scale(1.02);background-position:50% 50%}100%{transform:scale(1.055);background-position:51% 49%}}
-@media(max-width:700px){.ai-mural{height:68vh;min-height:470px}.ai-mural-base,.ai-mural-cloud{background-size:auto 100%;background-position:center}.ai-mural-cloud{-webkit-mask-image:radial-gradient(ellipse 38% 38% at 50% 50%,#000 68%,transparent 100%);mask-image:radial-gradient(ellipse 38% 38% at 50% 50%,#000 68%,transparent 100%)}.ai-mural-content{inset:auto 12px 24px}.ai-mural-content .coming-soon-message{padding:7px 11px}}
-@media(prefers-reduced-motion:reduce){body,.ai-mural-base,.ai-mural-cloud{transition:none!important;animation:none!important;will-change:auto!important}}
-</style></head><body class="quick-nav-page ai-art-page"><header class="site-header"><button class="language-toggle" type="button" aria-label="Switch language">中文</button><a class="avatar-frame" href="index.html" aria-label="Home"><img class="avatar" src="avatar-animation.gif?v=20261110-avatar-render-v4" alt="Animated character avatar" decoding="async" loading="eager"></a><h1 class="site-name">JINYUAN ZHANG</h1><div class="site-role">Animation Postgraduate | Storyboard Artist | Animation Director | Visual Creator</div><div class="site-email"><a href="mailto:zhangjinyuan0518@126.com">zhangjinyuan0518@126.com</a></div><nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="storyboard.html">Storyboard</a><a href="visual.html">Visual Development</a><a href="ai-art.html">AI Artwork</a><a href="more.html">More</a></nav></header><aside class="page-quick-nav" aria-label="Quick navigation"><button class="quick-nav-trigger" type="button" aria-label="Open quick navigation" aria-expanded="false"><span class="quick-nav-rail-icon" aria-hidden="true">☰</span><span class="quick-nav-rail-label">INDEX</span></button><nav class="page-quick-nav-links" aria-label="Project navigation"><a href="#ai-art-section"><span class="quick-nav-icon" aria-hidden="true">✦</span><span>AI Artwork</span></a></nav></aside><main class="ai-artwork-page" id="ai-art-section">
+.ai-mural-content .coming-soon-message{display:inline-block;margin:0;padding:8px 18px;border:1px solid rgba(255,255,255,.22);background:rgba(18,18,18,.72);color:#e7e0d1;font-size:clamp(13px,1.4vw,17px);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+@media(max-width:700px){.ai-mural{height:68vh;min-height:470px}.ai-mural-content{inset:auto 12px 24px}.ai-mural-content .coming-soon-message{padding:7px 11px}}
+@media(prefers-reduced-motion:reduce){body{transition:none!important}}</style></head><body class="quick-nav-page ai-art-page"><header class="site-header"><button class="language-toggle" type="button" aria-label="Switch language">中文</button><a class="avatar-frame" href="index.html" aria-label="Home"><img class="avatar" src="avatar-animation.gif?v=20261110-avatar-render-v4" alt="Animated character avatar" decoding="async" loading="eager"></a><h1 class="site-name">JINYUAN ZHANG</h1><div class="site-role">Animation Postgraduate | Storyboard Artist | Animation Director | Visual Creator</div><div class="site-email"><a href="mailto:zhangjinyuan0518@126.com">zhangjinyuan0518@126.com</a></div><nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="storyboard.html">Storyboard</a><a href="visual.html">Visual Development</a><a href="ai-art.html">AI Artwork</a><a href="more.html">More</a></nav></header><aside class="page-quick-nav" aria-label="Quick navigation"><button class="quick-nav-trigger" type="button" aria-label="Open quick navigation" aria-expanded="false"><span class="quick-nav-rail-icon" aria-hidden="true">☰</span><span class="quick-nav-rail-label">INDEX</span></button><nav class="page-quick-nav-links" aria-label="Project navigation"><a href="#ai-art-section"><span class="quick-nav-icon" aria-hidden="true">✦</span><span>AI Artwork</span></a></nav></aside><main class="ai-artwork-page" id="ai-art-section">
 <section class="ai-mural" aria-label="AI artwork background">
 <div class="ai-mural-base" aria-hidden="true"></div>
 <div class="ai-mural-cloud" aria-hidden="true"></div>
