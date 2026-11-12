@@ -2,10 +2,10 @@
   const hero = document.querySelector(".storyboard-hero-video");
   if (!hero) return;
 
-  // Keep the opening reel muted, autoplaying, and looping after its chunks are attached.
+  // Keep the opening reel audible, autoplaying, and looping after its chunks are attached.
   hero.loop = true;
   hero.autoplay = true;
-  hero.muted = true;
+  hero.muted = false;
   hero.playsInline = true;
   hero.addEventListener("loadedmetadata", () => {
     hero.loop = true;
