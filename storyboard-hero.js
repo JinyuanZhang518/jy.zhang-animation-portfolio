@@ -2,6 +2,16 @@
   const hero = document.querySelector(".storyboard-hero-video");
   if (!hero) return;
 
+  // Keep the opening reel muted, autoplaying, and looping after its chunks are attached.
+  hero.loop = true;
+  hero.autoplay = true;
+  hero.muted = true;
+  hero.playsInline = true;
+  hero.addEventListener("loadedmetadata", () => {
+    hero.loop = true;
+    if (document.visibilityState !== "hidden") hero.play().catch(() => {});
+  });
+
   const body = document.body;
   const heroObserver = new IntersectionObserver((entries) => {
     const visible = entries.some(entry => entry.isIntersecting);
