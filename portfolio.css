@@ -1669,3 +1669,46 @@ body.home-page .site-header .site-email{font-size:12px!important}
     width:355px!important;transform:translate(calc(-50% + 9px),calc(-50% + 6px))!important
   }
 }
+
+/* 2026-11-25: compact expanded project wheel across desktop and mobile. */
+body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links,
+body.quick-nav-page>aside.page-quick-nav.is-expanded>.page-quick-nav-links,
+body.quick-nav-page>aside.page-quick-nav:focus-within>.page-quick-nav-links{
+  box-sizing:border-box!important;
+  width:min(156px,calc(100vw - 52px))!important;
+  min-width:0!important;
+  max-width:min(156px,calc(100vw - 52px))!important;
+  max-height:min(68vh,500px)!important;
+  padding:6px!important;
+  gap:2px!important;
+}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a{
+  min-height:34px!important;
+  padding:5px 4px!important;
+  font-size:10.5px!important;
+  line-height:1.22!important;
+}
+body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a>span:not(.quick-nav-icon){
+  font-size:10.5px!important;
+  line-height:1.22!important;
+}
+@media(max-width:700px){
+  body.quick-nav-page>aside.page-quick-nav>.page-quick-nav-links,
+  body.quick-nav-page>aside.page-quick-nav.is-expanded>.page-quick-nav-links,
+  body.quick-nav-page>aside.page-quick-nav:focus-within>.page-quick-nav-links{
+    width:min(148px,calc(100vw - 48px))!important;
+    max-width:min(148px,calc(100vw - 48px))!important;
+    max-height:64vh!important;
+    padding:5px!important;
+  }
+  body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a{
+    min-height:32px!important;
+    padding:5px 3px!important;
+    font-size:10px!important;
+    line-height:1.2!important;
+  }
+  body.quick-nav-page>aside.page-quick-nav .page-quick-nav-links a>span:not(.quick-nav-icon){
+    font-size:10px!important;
+    line-height:1.2!important;
+  }
+}
